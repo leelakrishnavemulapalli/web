@@ -7,21 +7,18 @@
     <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script><!-- Add Font Awesome for social media icons -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            cursor: none;
         }
 
         body {
             font-family: 'Raleway', sans-serif;
-            background: linear-gradient(135deg, #ffafbd, #ffc3a0, #2193b0, #6dd5ed);
-            background-size: 400% 400%;
-            animation: gradientBG 15s ease infinite;
+            background-color: #0a0a0a;
             color: #fff;
             overflow-x: hidden;
             line-height: 1.6;
@@ -218,33 +215,6 @@
             transition: width 1.5s ease-in-out;
         }
 
-        .contact-form {
-            max-width: 500px;
-            margin: 0 auto;
-        }
-
-        .contact-form input,
-        .contact-form textarea {
-            width: 100%;
-            padding: 10px;
-            margin-bottom: 20px;
-            background: rgba(255, 255, 255, 0.1);
-            border: none;
-            border-bottom: 2px solid #ffd700;
-            color: white;
-            transition: all 0.3s;
-        }
-
-        .submit-btn {
-            background: #ffd700;
-            color: black;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-
         .three-background {
             position: fixed;
             top: 0;
@@ -254,25 +224,7 @@
             z-index: -1;
         }
 
-        @keyframes gradientBG {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-
-        @media (max-width: 768px) {
-            .split-section {
-                flex-direction: column;
-            }
-            
-            header h1 {
-                font-size: 2rem;
-            }
-            
-            .scroll-text {
-                font-size: 5rem;
-            }
-            .social-icons {
+        .social-icons {
             display: flex;
             justify-content: center;
             gap: 20px;
@@ -290,7 +242,6 @@
             color: #ffd700;
         }
 
-        /* Add styles for project buttons */
         .project-btn {
             display: inline-block;
             padding: 10px 20px;
@@ -307,6 +258,19 @@
             transform: translateY(-3px);
             box-shadow: 0 5px 15px rgba(0,0,0,0.2);
         }
+
+        @media (max-width: 768px) {
+            .split-section {
+                flex-direction: column;
+            }
+            
+            header h1 {
+                font-size: 2rem;
+            }
+            
+            .scroll-text {
+                font-size: 5rem;
+            }
         }
     </style>
 </head>
@@ -321,8 +285,7 @@
     <div class="three-background"></div>
     <div class="scroll-text">LEELA KRISHNA.V</div>
 
-
-    <header>
+<header>
         <img src="https://raw.githubusercontent.com/leelakrishnavemulapalli/vemulapallileelakrishna/refs/heads/main/sunny.jpg" alt="Profile Picture">
         <h1>Vemulapalli Leela Krishna</h1>
         <p>Student, Learner & Tech Enthusiast</p>
@@ -405,9 +368,7 @@
                 </div>
             </div>
         </div>
-    </section>
-
-
+</section>
         <section id="skills">
             <h2>SKILLS & INTERESTS</h2>
             <div class="skill-cards">
@@ -458,7 +419,7 @@
     </section>
 
     </main>
-
+    
     <script>
         // Three.js background
         const scene = new THREE.Scene();
@@ -546,8 +507,8 @@
         });
 
         // Hover animations
-        document.querySelectorAll('a, button, .project-card, .skill-card').forEach(item => {
-            item.item.addEventListener('mouseenter', () => {
+        document.querySelectorAll('a, button, .project-card, .skill-card, .social-icon, .project-btn').forEach(item => {
+            item.addEventListener('mouseenter', () => {
                 gsap.to(cursor, {
                     scale: 1.5,
                     duration: 0.3
@@ -561,61 +522,47 @@
             });
         });
 
-        // Scroll-triggered animations
-        gsap.utils.toArray('section').forEach(section => {
-            gsap.from(section, {
-                opacity: 0,
-                y: 100,
-                duration: 1,
-                scrollTrigger: {
-                    trigger: section,
-                    start: "top center+=100",
-                    toggleActions: "play none none reverse"
-                }
-            });
+gsap.utils.toArray('section').forEach(section => {
+        gsap.from(section, {
+            opacity: 0,
+            y: 50, // Reduced from 100 to 50 for a subtler effect
+            duration: 0.8, // Reduced from 1 to 0.8 for faster animation
+            scrollTrigger: {
+                trigger: section,
+                start: "top bottom-=100", // Changed to trigger earlier
+                toggleActions: "play none none none" // Changed to not reverse on scroll up
+            }
         });
+    });
 
-        // Project cards animation
-        gsap.utils.toArray('.project-card').forEach(card => {
-            gsap.from(card, {
-                opacity: 0,
-                y: 100,
-                duration: 1,
-                scrollTrigger: {
-                    trigger: card,
-                    start: "top bottom-=100",
-                    toggleActions: "play none none reverse"
-                }
-            });
+    // Ensure contact section is visible
+    gsap.set('#contact', { opacity: 1, y: 0 });
+
+    // Simplified hover animations
+    document.querySelectorAll('a, button, .project-card, .skill-card, .social-icon, .project-btn').forEach(item => {
+        item.addEventListener('mouseenter', () => {
+            gsap.to(item, { scale: 1.05, duration: 0.3 });
         });
-
-        // Skill cards animation
-        gsap.utils.toArray('.skill-card').forEach((card, index) => {
-            gsap.from(card, {
-                opacity: 0,
-                x: index % 2 === 0 ? -100 : 100,
-                duration: 1,
-                scrollTrigger: {
-                    trigger: card,
-                    start: "top bottom-=100",
-                    toggleActions: "play none none reverse"
-                }
-            });
+        item.addEventListener('mouseleave', () => {
+            gsap.to(item, { scale: 1, duration: 0.3 });
         });
+    });
+    
 
-        // Progress bar animations
-        gsap.utils.toArray('progress').forEach(progress => {
-            gsap.from(progress, {
-                value: 0,
-                duration: 1.5,
-                scrollTrigger: {
-                    trigger: progress,
-                    start: "top bottom-=100",
-                    toggleActions: "play none none reverse"
-                }
-            });
-        });
+        // Responsive handling
+        function handleResize() {
+            renderer.setSize(window.innerWidth, window.innerHeight);
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
 
+            const scrollText = document.querySelector('.scroll-text');
+            scrollText.style.fontSize = window.innerWidth <= 768 ? '5rem' : '10rem';
+        }
+
+        window.addEventListener('resize', handleResize);
+        handleResize();
+
+        // Smooth scrolling for navigation
         document.querySelectorAll('nav a').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
                 e.preventDefault();
@@ -628,121 +575,6 @@
                 });
             });
         });
-
-        // Form animations
-        const formElements = document.querySelectorAll('.contact-form input, .contact-form textarea');
-        
-        formElements.forEach(element => {
-            element.addEventListener('focus', () => {
-                gsap.to(element, {
-                    borderColor: '#ffffff',
-                    duration: 0.3
-                });
-            });
-            
-            element.addEventListener('blur', () => {
-                gsap.to(element, {
-                    borderColor: '#ffd700',
-                    duration: 0.3
-                });
-            });
-        });
-
-        // Responsive handling
-        function handleResize() {
-            // Update Three.js renderer
-            renderer.setSize(window.innerWidth, window.innerHeight);
-            camera.aspect = window.innerWidth / window.innerHeight;
-            camera.updateProjectionMatrix();
-
-            // Update scroll text size
-            const scrollText = document.querySelector('.scroll-text');
-            if (window.innerWidth <= 768) {
-                scrollText.style.fontSize = '5rem';
-            } else {
-                scrollText.style.fontSize = '10rem';
-            }
-        }
-
-        window.addEventListener('resize', handleResize);
-
-        // Initialize resize handler
-        handleResize();
-
-        // Form submission
-        document.querySelector('.contact-form').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            // Animate the submit button
-            gsap.to('.submit-btn', {
-                scale: 0.95,
-                duration: 0.1,
-                yoyo: true,
-                repeat: 1
-            });
-            
-            // Here you would typically handle the form submission
-            // For demo purposes, we'll just reset the form
-            setTimeout(() => {
-                this.reset();
-                alert('Thank you for your message!');
-            }, 500);
-        });
-
-        // Easter egg - Konami code
-        let konamiCode = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'b', 'a'];
-        let konamiIndex = 0;
-
-        document.addEventListener('keydown', function(e) {
-            if (e.key === konamiCode[konamiIndex]) {
-                konamiIndex++;
-                if (konamiIndex === konamiCode.length) {
-                    // Trigger easter egg animation
-                    gsap.to('body', {
-                        rotation: 360,
-                        duration: 1,
-                        onComplete: () => {
-                            alert('You found the secret! 🎉');
-                            gsap.set('body', {rotation: 0});
-                        }
-                    });
-                    konamiIndex = 0;
-                }
-            } else {
-                konamiIndex = 0;
-            }
-        });
-        document.querySelectorAll('.social-icon').forEach(icon => {
-            icon.addEventListener('mouseenter', () => {
-                gsap.to(cursor, {
-                    scale: 1.5,
-                    duration: 0.3
-                });
-            });
-            icon.addEventListener('mouseleave', () => {
-                gsap.to(cursor, {
-                    scale: 1,
-                    duration: 0.3
-                });
-            });
-        });
-
-        // Add hover effect for project buttons
-        document.querySelectorAll('.project-btn').forEach(btn => {
-            btn.addEventListener('mouseenter', () => {
-                gsap.to(cursor, {
-                    scale: 1.5,
-                    duration: 0.3
-                });
-            });
-            btn.addEventListener('mouseleave', () => {
-                gsap.to(cursor, {
-                    scale: 1,
-                    duration: 0.3
-                });
-            });
-        });
     </script>
 </body>
 </html>
- 
