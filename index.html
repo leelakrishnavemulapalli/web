@@ -379,11 +379,11 @@
                     <progress value="80" max="100"></progress>
                 </div>
                 <div class="skill-card">
-                    <h3>CSS</h3>
+                    <h3>MATLAB</h3>
                     <progress value="50" max="100"></progress>
                 </div>
                 <div class="skill-card">
-                    <h3>JAVA SCRIPT</h3>
+                    <h3>C++</h3>
                     <progress value="10" max="100"></progress>
                 </div>
                 <div class="skill-card">
@@ -396,10 +396,12 @@
         <h2>GET IN TOUCH</h2>
         <div class="contact-grid">
             <div class="contact-item">
+                <i class="fas fa-envelope contact-icon"></i>
                 <h3>Email</h3>
                 <p>leelakrishnavemulapalli@proton.me</p>
             </div>
             <div class="contact-item">
+                <i class="fas fa-phone contact-icon"></i>
                 <h3>Mobile</h3>
                 <p>+91 9701978579</p>
             </div>
@@ -417,6 +419,8 @@
             <a href="https://www.instagram.com/leelakrishnavemulapalli?igsh=MTZqcGVkZnc4cnpvcQ==" target="_blank" class="social-icon">
                 <i class="fab fa-instagram"></i>
             </a>
+            <a href="https://yuy0rwxtjilmpiku-hlqarf4jz.preview.co.dev/" target="_blank" class="social-icon">
+        <i class="fas fa-user-check"></i>
         </div>
     </section>
 
@@ -527,20 +531,20 @@
 gsap.utils.toArray('section').forEach(section => {
         gsap.from(section, {
             opacity: 0,
-            y: 50, // Reduced from 100 to 50 for a subtler effect
-            duration: 0.8, // Reduced from 1 to 0.8 for faster animation
+            y: 50, 
+            duration: 0.8, 
             scrollTrigger: {
                 trigger: section,
-                start: "top bottom-=100", // Changed to trigger earlier
-                toggleActions: "play none none none" // Changed to not reverse on scroll up
+                start: "top bottom-=100", 
+                toggleActions: "play none none none" 
             }
         });
     });
 
-    // Ensure contact section is visible
+    
     gsap.set('#contact', { opacity: 1, y: 0 });
 
-    // Simplified hover animations
+    
     document.querySelectorAll('a, button, .project-card, .skill-card, .social-icon, .project-btn').forEach(item => {
         item.addEventListener('mouseenter', () => {
             gsap.to(item, { scale: 1.05, duration: 0.3 });
