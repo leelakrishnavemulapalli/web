@@ -1,0 +1,1877 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vemulapalli Leela Krishna</title>
+    <meta name="description" content="Vemulapalli Leela Krishna's portfolio showcasing skills in robotics, drones, and aerospace.">
+    <meta name="google-site-verification" content="YODKWTqzcmLWK4tCncidc3OSbCmEkGZjH6iMKq4sB-s" />
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;700&family=Playfair+Display:wght@700&family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="icon" href="https://raw.githubusercontent.com/leelakrishnavemulapalli/web/refs/heads/main/VEMULAPALLILEELAKRISHNA.png" type="image/png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/ScrollTrigger.min.js"></script>
+    <style>
+       * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Raleway', sans-serif;
+    background-color: #000000;
+    color: #fff;
+    overflow-x: hidden;
+    line-height: 1.6;
+}
+
+.custom-cursor {
+    width: 20px;
+    height: 20px;
+    border: 2px solid white;
+    border-radius: 50%;
+    position: fixed;
+    pointer-events: none;
+    z-index: 9999;
+    transition: transform 0.2s ease;
+}
+
+.cursor-dot {
+    width: 4px;
+    height: 4px;
+    background: white;
+    border-radius: 50%;
+    position: fixed;
+    pointer-events: none;
+    z-index: 9999;
+}
+
+.loading-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #000000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.loading-text {
+    font-size: 2rem;
+    letter-spacing: 4px;
+    color: white;
+}
+
+.scroll-text {
+    position: fixed;
+    white-space: nowrap;
+    font-size: 10rem;
+    opacity: 0.1;
+    font-weight: bold;
+    pointer-events: none;
+    z-index: -1;
+}
+
+header {
+    text-align: center;
+    padding: 50px 20px;
+    background:rgba(0, 0, 0, 0.5);
+    position: relative;
+    perspective: 1000px;
+}
+
+header img {
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    border: 5px solid #fff;
+    margin-bottom: 20px;
+    transition: transform 0.5s;
+}
+
+header img:hover {
+    transform: rotateY(180deg);
+}
+
+header h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 4rem;
+    margin: 20px 0;
+    letter-spacing: 3px;
+    text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.7);
+}
+
+nav ul {
+    padding: 0;
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin: 30px 0 0 0;
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 700;
+    padding: 12px 20px;
+    display: inline-block;
+    transition: all 0.4s;
+    border-radius: 50px;
+    background: rgba(100, 100, 100, 0.4);
+    position: relative;
+    overflow: hidden;
+    margin: 5px;
+}
+
+nav ul li a::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+    transition: 0.5s;
+}
+
+nav ul li a:hover::before {
+    left: 100%;
+}
+
+.split-section {
+    display: flex;
+    min-height: 100vh;
+    position: relative;
+}
+
+.split-left, .split-right {
+    flex: 1;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.split-left {
+    background: rgba(0, 0, 0, 0.3);
+}
+
+.project-showcase {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    padding: 20px;
+}
+
+.project-card {
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
+    overflow: hidden;
+    transition: all 0.3s;
+}
+
+.project-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.project-image {
+    width: 100%;
+    height: 200px;
+    background-size: cover;
+    background-position: center;
+}
+
+.project-content {
+    padding: 20px;
+}
+
+/* Fixed skills section */
+:root {
+    --primary-color: #ffd700;
+    --text-light: #ffffff;
+    --card-bg: #rgba(0, 0, 0, 0.5);
+    --skill-bg:rgba(0, 0, 0, 0.5);
+    --skill-border: rgba(255, 255, 255, 0.1);
+}
+
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.5);
+}
+
+.section-title {
+    text-align: center;
+    color: var(--primary-color);
+    margin: 20px 0;
+    font-size: 2rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    position: relative;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+    background: #000000;
+    padding: 15px;
+    border-radius: 15px;
+    backdrop-filter: blur(5px);
+    display: inline-block;
+    align-self: center;
+}
+
+.section-title:after {
+    content: '';
+    display: block;
+    width: 80px;
+    height: 4px;
+    background: var(--primary-color);
+    margin: 15px auto 0;
+    border-radius: 2px;
+    box-shadow: 0 2px 10px var(--primary-color);
+}
+
+#skills-container {
+    position: relative;
+    width: 100vw;
+    height: 100vw;
+    max-width: 800px;
+    max-height: 800px;
+    margin: 0 auto;
+    border-radius: 50%;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 0 50px rgba(255, 215, 0, 0.15);
+    overflow: visible;
+    perspective: 1200px;
+    background: #000000;
+}
+
+.central-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: var(--primary-color);
+    font-size: 3rem;
+    font-weight: bold;
+    text-align: center;
+    z-index: 10;
+    text-shadow: 0 0 15px rgba(255, 215, 0, 0.8), 0 0 30px rgba(255, 215, 0, 0.5);
+    pointer-events: none;
+    background: #000000;
+    width: 80px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 215, 0, 0.3);
+}
+.skill {
+    position: absolute;
+    width: 65px;
+    height: 65px;
+    border-radius: 50%;
+    background-color: #000000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-weight: bold;
+    border: 2px solid var(--skill-border);
+    box-shadow: 0 0 20px rgba(255, 215, 0, 0.2), inset 0 0 15px rgba(0, 0, 0, 0.5);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    font-size: 1.1rem;
+    cursor: pointer;
+    backdrop-filter: blur(8px);
+}
+
+.skill:hover {
+    transform: scale(1.4) !important;
+    z-index: 100 !important;
+    box-shadow: 0 0 30px rgba(255, 215, 0, 0.6), inset 0 0 15px rgba(255, 215, 0, 0.3);
+    border-color: var(--primary-color);
+    background-color: #000000;
+}
+
+.skill i {
+    font-size: 1.8rem;
+    transition: all 0.3s;
+    color: var(--text-light);
+}
+
+.skill:hover i {
+    color: var(--primary-color);
+    transform: scale(1.2);
+    filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.8));
+}
+
+.tooltip {
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    padding: 10px 18px;
+    border-radius: 10px;
+    font-size: 15px;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.3s, transform 0.3s;
+    white-space: nowrap;
+    z-index: 100;
+    border-left: 3px solid var(--primary-color);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+    transform: translateY(10px);
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    backdrop-filter: blur(5px);
+}
+
+.tooltip.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.skills-legend {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    padding: 30px 0;
+    margin-top: 20px;
+    background: #000000;
+}
+
+.skill-category {
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 12px;
+    padding: 20px;
+    text-align: center;
+    flex: 1;
+    min-width: 220px;
+    max-width: 320px;
+    transition: all 0.4s ease;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(8px);
+}
+
+.skill-category:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4), 0 0 20px rgba(255, 215, 0, 0.15);
+    border-color: rgba(255, 215, 0, 0.3);
+}
+
+.skill-category h3 {
+    color: var(--primary-color);
+    margin-bottom: 20px;
+    font-size: 1.3rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    position: relative;
+    padding-bottom: 12px;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.skill-category h3:after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 40px;
+    height: 3px;
+    background: var(--primary-color);
+    border-radius: 2px;
+    box-shadow: 0 1px 5px var(--primary-color);
+}
+
+.skill-icons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+}
+
+.skill-icon-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.skill-icon-item i {
+    font-size: 1.5rem;
+    color: var(--text-light);
+    transition: all 0.3s;
+    background: #000000;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.skill-icon-item:hover i {
+    color: var(--primary-color);
+    transform: scale(1.1) rotate(5deg);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4), 0 0 15px rgba(255, 215, 0, 0.4);
+}
+
+.skill-icon-item span {
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+/* Enhanced orbit trails */
+.orbit-trail {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    border: 1px dashed rgba(255, 215, 0, 0.15);
+    pointer-events: none;
+    box-shadow: 0 0 30px rgba(255, 215, 0, 0.05);
+}
+
+.orbit-trail:nth-child(1) {
+    width: 90%;
+    height: 90%;
+}
+
+.orbit-trail:nth-child(2) {
+    width: 60%;
+    height: 60%;
+}
+
+.orbit-trail:nth-child(3) {
+    width: 30%;
+    height: 30%;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .section-title {
+        font-size: 1.8rem;
+    }
+    
+    .skills-legend {
+        gap: 15px;
+    }
+    
+    .skill-category {
+        min-width: 45%;
+        padding: 15px;
+    }
+    
+    .skill {
+        width: 60px;
+        height: 60px;
+    }
+    
+    .skill i {
+        font-size: 1.5rem;
+    }
+    
+    #skills-container {
+        width: 90vw;
+        height: 90vw;
+        max-width: 500px;
+        max-height: 500px;
+    }
+    
+    .central-text {
+        font-size: 2rem;
+        padding: 15px 25px;
+    }
+}
+
+@media (max-width: 480px) {
+    .section-title {
+        font-size: 1.5rem;
+    }
+    
+    .central-text {
+        font-size: 1.6rem;
+        padding: 12px 20px;
+    }
+    
+    .skill-category {
+        min-width: 100%;
+        margin-bottom: 10px;
+    }
+    
+    .skill {
+        width: 50px;
+        height: 50px;
+    }
+    
+    .skill i {
+        font-size: 1.3rem;
+    }
+    
+    .skill-icon-item i {
+        width: 40px;
+        height: 40px;
+        font-size: 1.2rem;
+    }
+    
+    #skills-container {
+        width: 85vw;
+        height: 85vw;
+        max-width: 350px;
+        max-height: 350px;
+    }
+}
+
+.three-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    background: #000000;
+}
+
+.social-icons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.social-icon {
+    font-size: 2rem;
+    color: #fff;
+    transition: all 0.3s;
+}
+
+.social-icon:hover {
+    transform: translateY(-5px);
+    color: #ffd700;
+}
+
+.project-btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background: #ffd700;
+    color: black;
+    text-decoration: none;
+    border-radius: 5px;
+    margin-top: 15px;
+    transition: all 0.3s;
+}
+
+.project-btn:hover {
+    background: #fff;
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+/* Achievements section */
+.achievements-section {
+    padding: 60px 20px;
+    background:rgba(0,0,0,0.5);
+}
+
+.achievements-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.achievement-card {
+    background: rgba(0,0,0,0.5);
+    border-radius: 10px;
+    padding: 25px;
+    text-align: center;
+    transition: all 0.3s;
+    border-bottom: 3px solid #ffd700;
+}
+
+.achievement-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+}
+
+.achievement-icon {
+    font-size: 3rem;
+    color: #ffd700;
+    margin-bottom: 15px;
+}
+
+/* Testimonials section */
+.testimonials-section {
+    padding: 60px 20px;
+    background: #000000;
+}
+
+.testimonial-slider {
+    margin-top: 40px;
+    position: relative;
+    padding: 0 40px;
+}
+
+.testimonial-card {
+    background: #000000;
+    border-radius: 10px;
+    padding: 30px;
+    margin: 0 auto;
+    max-width: 800px;
+    position: relative;
+}
+
+.testimonial-text {
+    font-style: italic;
+    font-size: 1.1rem;
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.testimonial-text::before,
+.testimonial-text::after {
+    content: '"';
+    font-size: 3rem;
+    color: rgba(255, 255, 255, 0.2);
+    position: absolute;
+}
+
+.testimonial-text::before {
+    top: -20px;
+    left: -15px;
+}
+
+.testimonial-text::after {
+    bottom: -40px;
+    right: -15px;
+}
+
+.testimonial-author {
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+}
+
+.testimonial-author img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 15px;
+}
+
+/* Blog section */
+.blog-section {
+    padding: 60px 20px;
+    background: rgba(0,0,0,0.5);
+}
+
+.blog-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.blog-card {
+    background:rgba(0,0,0,0.5);
+    border-radius: 10px;
+    overflow: hidden;
+    transition: all 0.3s;
+}
+
+.blog-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.blog-image {
+    width: 100%;
+    height: 200px;
+    background-size: cover;
+    background-position: center;
+}
+
+.blog-content {
+    padding: 20px;
+}
+
+.blog-date {
+    font-size: 0.8rem;
+    color: #ffd700;
+    margin-bottom: 10px;
+}
+
+.blog-btn {
+    display: inline-block;
+    padding: 8px 16px;
+    background: transparent;
+    color: #ffd700;
+    text-decoration: none;
+    border: 1px solid #ffd700;
+    border-radius: 5px;
+    margin-top: 15px;
+    transition: all 0.3s;
+}
+
+.blog-btn:hover {
+    background: #ffd700;
+    color: #000;
+}
+
+/* Improved contact section */
+.contact-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    margin: 40px 0;
+}
+
+.contact-item {
+    background: rgba(0,0,0,0.5);
+    border-radius: 10px;
+    padding: 25px;
+    text-align: center;
+    transition: all 0.3s;
+}
+
+.contact-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.contact-icon {
+    font-size: 2.5rem;
+    color: #ffd700;
+    margin-bottom: 15px;
+}
+
+/* Timeline styling */
+.timeline {
+    position: relative;
+    max-width: 1200px;
+    margin: 20px auto;
+}
+
+.timeline-item {
+    padding: 20px 30px;
+    position: relative;
+    margin-bottom: 30px;
+    background: rgba(0,0,0,0.5);
+    border-radius: 10px;
+    border-left: 3px solid #ffd700;
+}
+
+.timeline-item h3 {
+    color: #ffd700;
+    margin-bottom: 10px;
+}
+
+/* Contact form */
+.contact-form {
+    max-width: 600px;
+    margin: 0 auto;
+    background:rgba(0,0,0,0.5);
+    padding: 30px;
+    border-radius: 10px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+}
+
+.form-input, 
+.form-textarea {
+    width: 100%;
+    padding: 12px;
+    background: rgba(0,0,0,0.5);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 5px;
+    color: white;
+    font-family: 'Raleway', sans-serif;
+}
+
+.form-textarea {
+    min-height: 150px;
+    resize: vertical;
+}
+
+.form-button {
+    display: inline-block;
+    padding: 12px 25px;
+    background: #ffd700;
+    color: black;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.3s;
+}
+
+.form-button:hover {
+    background: white;
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+/* Scroll to top button */
+.scroll-to-top {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 50px;
+    height: 50px;
+    background: #ffd700;
+    color: black;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    z-index: 100;
+    opacity: 0;
+    transition: all 0.3s;
+    font-size: 1.5rem;
+}
+
+.scroll-to-top.visible {
+    opacity: 1;
+}
+
+.scroll-to-top:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+/* Enhanced section titles */
+section h2 {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 30px;
+    font-family: 'Playfair Display', serif;
+    letter-spacing: 2px;
+    position: relative;
+    padding-bottom: 15px;
+}
+
+section h2::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 3px;
+    background: #ffd700;
+}
+
+/* Certifications section */
+.certifications-section {
+    padding: 60px 20px;
+    background: #000000;
+}
+
+.certifications-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 20px;
+    margin-top: 40px;
+}
+
+.certification-card {
+    background: #000000;
+    border-radius: 10px;
+    padding: 20px;
+    transition: all 0.3s;
+    display: flex;
+    flex-direction: column;
+}
+
+.certification-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.certification-icon {
+    font-size: 2rem;
+    color: #ffd700;
+    margin-bottom: 15px;
+}
+
+.certification-source {
+    margin-top: auto;
+    font-size: 0.85rem;
+    color: #a1a1a1;
+}
+
+footer {
+    background:rgba(0,0,0,0.1);
+    text-align: center;
+    padding: 30px 0;
+    margin-top: 40px;
+}
+
+@media (max-width: 768px) {
+    .split-section {
+        flex-direction: column;
+    }
+    
+    header h1 {
+        font-size: 2rem;
+    }
+    
+    .scroll-text {
+        font-size: 5rem;
+    }
+
+    .timeline-item {
+        padding: 15px;
+    }
+
+    .contact-form {
+        padding: 20px;
+    }
+}
+    </style>
+</head>
+<body>
+    <div class="custom-cursor"></div>
+    <div class="cursor-dot"></div>
+    
+    <div class="loading-screen">
+        <div class="loading-text">LOADING</div>
+    </div>
+
+    <div class="three-background"></div>
+    <div class="scroll-text">LEELA KRISHNA</div>
+
+    <header>
+        <img src="https://i.imgur.com/urPtiiW.jpeg" alt="Profile Picture">
+        <h1>Vemulapalli Leela Krishna</h1>
+        <p>Mechanical Engineering Student, Drone Enthusiast & Tech Innovator</p>
+        <nav>
+            <ul>
+                <li><a href="#about">About Me</a></li>
+                <li><a href="#education">Education</a></li>
+                <li><a href="#achievements">Achievements</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#certifications">Certifications</a></li>
+                <li><a href="#blog">Blog</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+       <section id="about" class="split-section">
+            <div class="split-left">
+                <h2>ABOUT ME</h2>
+                <p>I am Leela Krishna Vemulapalli, a second-year mechanical engineering student with a strong passion for drone technology, robotics, and simulations. I'm eager to improve my technical skills and dive deeper into ROS 2, PX4, GAZEBO and UAV development through research and internships.</p>
+                <p>Currently serving as the Vice-President of YugTronix, our university's first robotics club, I lead a team developing quadcopters and other autonomous systems. My ultimate goal is to work on autonomous drones and bring innovative ideas to life in this field.</p>
+                <p>I believe in the power of continuous learning and innovation to solve real-world problems through engineering excellence.</p>
+            </div>
+            <div class="split-right">
+    <h2>EXPERIENCE</h2>
+    <div class="timeline">
+        <div class="timeline-item">
+            <h3>September 2024 - Present</h3>
+            <p>Website Coordinator for IIPE JNTUK Student Chapter</p>
+        </div>
+        <div class="timeline-item">
+            <h3>August 2024 - May 2025</h3>
+            <p>Vice President of YugTroniX Club</p>
+        </div>
+        <div class="timeline-item">
+            <h3>May 2025 - June 2025</h3>
+            <p>Research Intern at IIT Hyderabad</p>
+        </div>
+        <div class="timeline-item">
+            <h3>May 2025 - Present</h3>
+            <p>President of YugTroniX</p>
+        </div>
+        <div class="timeline-item">
+            <h3>Present</h3>
+            <p>Technical Coordinator for Torque 2K25</p>
+        </div>
+    </div>
+</div>
+        </section>
+
+        <section id="education">
+            <h2>EDUCATION</h2>
+            <div class="project-showcase">
+                <div class="project-card">
+                    <div class="project-content">
+                        <h3>UNIVERSITY</h3>
+                        <p>Currently pursuing B.Tech Mechanical Engineering at University College of Engineering, Kakinada (UCEK) - JNTU Kakinada (2023-2027), maintaining a CGPA of 8.5 through 3rd semester.</p>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-content">
+                        <h3>HIGHER SECONDARY</h3>
+                        <p>Completed at N K R Junior College, BIE-AP with 96.9% in Maths, Physics, and Chemistry (2023).</p>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-content">
+                        <h3>PRIMARY EDUCATION</h3>
+                        <p>Achieved 100% in 10th-grade board exams at Rama Krishna High School, BSE-AP (2021).</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Updated Achievements Section -->
+        <section id="achievements" class="achievements-section">
+            <h2>ACHIEVEMENTS</h2>
+            <div class="achievements-grid">
+                <div class="achievement-card">
+                    <i class="fas fa-trophy achievement-icon"></i>
+                    <h3>KEATS Scholarship</h3>
+                    <p>Awarded a ₹20,000 scholarship from KEATS organization for being a top meritorious student in Mechanical Engineering (Jan 2025)</p>
+                </div>
+                <div class="achievement-card">
+                    <i class="fas fa-lightbulb achievement-icon"></i>
+                    <h3>INNO-V8 Innovation Fund</h3>
+                    <p>Submitted a proposal for an innovative UAV concept for wildlife monitoring and surveillance (Feb 2025)</p>
+                </div>
+                <div class="achievement-card">
+                    <i class="fas fa-bolt achievement-icon"></i>
+                    <h3>SPARKS Program</h3>
+                    <p>Selected for the SPARKS program by Subbu Kota Foundation, working on an autonomous power-harvesting drone (Jan 2025)</p>
+                </div>
+                <div class="achievement-card">
+                    <i class="fas fa-user-tie achievement-icon"></i>
+                    <h3>YugTronix Leadership</h3>
+                    <p>Selected as Vice President and Quadcopter Team Lead of YugTroniX, the first robotics club at UCEK-JNTUK (Aug 2024)</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="projects">
+            <h2>MY PROJECTS</h2>
+            <div class="project-showcase">
+                <div class="project-card">
+                    <div class="project-image" style="background-image: url('https://raw.githubusercontent.com/leela-krishna4/images/refs/heads/main/Leonardo_Phoenix_10_A_futuristic_drone_hovering_near_highvolta_0%20(1).jpg')"></div>
+                    <div class="project-content">
+                        <h3>Power-Harvesting Drone Prototype</h3>
+                        <p>Working with a team to develop a drone that can harvest power from high-voltage power lines using electromagnetic induction. Designing the gripper mechanism for safe power extraction and simulating power transfer efficiency and flight stability.</p>
+                        <p><strong>Tools:</strong> MATLAB, Fusion 360, Simulink, PX4, ROS 2, Python, QGroundControl</p>
+                        <a href="#contact" class="project-btn" onclick="showProjectMessage()">Project Details</a>
+                    </div>
+                </div>
+                 <div class="project-card">
+                    <div class="project-image" style="background-image: url('https://raw.githubusercontent.com/leela-krishna4/images/refs/heads/main/Leonardo_Phoenix_10_A_drone_flying_above_a_dense_forest_at_sun_2%20(1).jpg')"></div>
+                    <div class="project-content">
+                        <h3>Power-Harvesting Drone Prototype</h3>
+                        <p>Working with a team to develop a drone that can harvest power from high-voltage power lines using electromagnetic induction. Designing the gripper mechanism for safe power extraction and simulating power transfer efficiency and flight stability.</p>
+                        <p><strong>Tools:</strong> MATLAB, Fusion 360, Simulink, PX4, ROS 2, Python, QGroundControl</p>
+                        <a href="#contact" class="project-btn" onclick="showProjectMessage()">Project Details</a>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-image" style="background-image: url('https://raw.githubusercontent.com/leelakrishnavemulapalli/web/refs/heads/main/IMG_20241215_232730%5B1%5D.jpg')""></div>
+                    <div class="project-content">
+                        <h3>YugTroniX Quadcopter Development</h3>
+                        <p>Leading a team in the design and development of a quadcopter at UCEK-JNTUK. Working on implementing new technologies for the drone's movement and control while coordinating with different teams for smooth integration.</p>
+                        <a href="https://yugmain.netlify.app/" class="project-btn" target="_blank">Visit YugTroniX Website</a>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-image" style="background-image: url('https://danielpuiatti.com/wp-content/uploads/2023/11/Maintaining-Perfect-Aspect-Ratios-A-Web-Developers-Guide-to-Image-Resizing-with-HTML-CSS-and-JS-1024x585.png')"></div>
+                    <div class="project-content">
+                        <h3>Web Development Projects</h3>
+                        <p>Developed and launched the official website for the IIPE student chapter, improving online presence for over 150 members. Also handling technical aspects and social media for Torque 2k25 national-level symposium.</p>
+                        <a href="https://iipe-ucek-web-management.github.io/iipe.web/" class="project-btn" target="_blank">Visit IIPE Student Chapter</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="skills">
+           <div class="container">
+        <h2 class="section-title">Skills & Expertise</h2>
+        
+        <div id="skills-container">
+            <div class="central-text">
+    <i class="fas fa-cog"></i>
+</div>
+            <div class="orbit-trail"></div>
+            <div class="orbit-trail"></div>
+            <div class="orbit-trail"></div>
+            <div class="tooltip"></div>
+        </div>
+        
+        <!-- Legend for the skill icons -->
+        <div class="skills-legend">
+    <div class="skill-category">
+        <h3>Programming</h3>
+        <div class="skill-icons">
+            <div class="skill-icon-item" data-skill="Python">
+                <i class="fab fa-python"></i>
+                <span>Python</span>
+            </div>
+            <div class="skill-icon-item" data-skill="C++">
+                <i class="fas fa-code"></i>
+                <span>C++</span>
+            </div>
+            <div class="skill-icon-item" data-skill="Bash">
+                <i class="fas fa-terminal"></i>
+                <span>Bash</span>
+            </div>
+        </div>
+    </div>
+    
+    <div class="skill-category">
+        <h3>Computer Vision</h3>
+        <div class="skill-icons">
+            <div class="skill-icon-item" data-skill="OpenCV">
+                <i class="fas fa-eye"></i>
+                <span>OpenCV</span>
+            </div>
+            <div class="skill-icon-item" data-skill="ArUco Tracking">
+                <i class="fas fa-crosshairs"></i>
+                <span>ArUco</span>
+            </div>
+        </div>
+    </div>
+    
+    <div class="skill-category">
+        <h3>Deep Learning</h3>
+        <div class="skill-icons">
+            <div class="skill-icon-item" data-skill="YOLO">
+                <i class="fas fa-brain"></i>
+                <span>YOLO</span>
+            </div>
+            <div class="skill-icon-item" data-skill="PyTorch">
+                <i class="fas fa-fire"></i>
+                <span>PyTorch</span>
+            </div>
+        </div>
+    </div>
+    
+    <div class="skill-category">
+        <h3>Embedded Systems</h3>
+        <div class="skill-icons">
+            <div class="skill-icon-item" data-skill="Raspberry Pi">
+                <i class="fab fa-raspberry-pi"></i>
+                <span>Raspberry Pi</span>
+            </div>
+        </div>
+    </div>
+    
+    <div class="skill-category">
+        <h3>Drones & Robotics</h3>
+        <div class="skill-icons">
+            <div class="skill-icon-item" data-skill="PX4">
+                <i class="fas fa-microchip"></i>
+                <span>PX4</span>
+            </div>
+            <div class="skill-icon-item" data-skill="ROS 2">
+                <i class="fas fa-robot"></i>
+                <span>ROS 2</span>
+            </div>
+            <div class="skill-icon-item" data-skill="GAZEBO">
+                <i class="fas fa-cubes"></i>
+                <span>GAZEBO</span>
+            </div>
+        </div>
+    </div>
+    
+    <div class="skill-category">
+        <h3>Software Packages</h3>
+        <div class="skill-icons">
+            <div class="skill-icon-item" data-skill="MATLAB">
+                <i class="fas fa-calculator"></i>
+                <span>MATLAB</span>
+            </div>
+            <div class="skill-icon-item" data-skill="AutoCAD">
+                <i class="fas fa-drafting-compass"></i>
+                <span>AutoCAD</span>
+            </div>
+            <div class="skill-icon-item" data-skill="Fusion 360">
+                <i class="fas fa-cube"></i>
+                <span>Fusion 360</span>
+            </div>
+        </div>
+    </div>
+    
+    <div class="skill-category">
+        <h3>Web Development</h3>
+        <div class="skill-icons">
+            <div class="skill-icon-item" data-skill="HTML">
+                <i class="fab fa-html5"></i>
+                <span>HTML</span>
+            </div>
+            <div class="skill-icon-item" data-skill="CSS">
+                <i class="fab fa-css3-alt"></i>
+                <span>CSS</span>
+            </div>
+            <div class="skill-icon-item" data-skill="JavaScript">
+                <i class="fab fa-js"></i>
+                <span>JavaScript</span>
+            </div>
+        </div>
+    </div>
+</div>
+        </div>
+    </div>
+        </section>
+
+     
+        
+        <!-- Contact Section -->
+        <section id="contact">
+            <h2>GET IN TOUCH</h2>
+            
+            <div class="contact-form">
+                <h3>Send Me a Message</h3>
+                <form action="https://formspree.io/f/mqadjgek" method="POST" class="contact-form" id="contactForm">
+                    <div class="form-group">
+                        <label for="name" class="form-label">Name</label>
+                        <input type="text" id="name" name="name" class="form-input" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email" class="form-label">Email</label>
+                        <input type="email" id="email" name="email" class="form-input" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="subject" class="form-label">Subject</label>
+                        <input type="text" id="subject" name="subject" class="form-input" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message" class="form-label">Message</label>
+                        <textarea id="message" name="message" class="form-textarea" required></textarea>
+                    </div>
+                    <button type="submit" class="form-button">Send Message</button>
+                    <p class="success-message" id="success-message" style="display: none; color: #ffd700; text-align: center; margin-top: 15px;">✅ Thank you! Your message has been sent.</p>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+         <!-- Social Icons Section with proper closure -->
+<div class="social-icons">
+    <a href="https://www.linkedin.com/in/leela-krishna-vemulapalli-514188262?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank" class="social-icon">
+        <i class="fab fa-linkedin"></i>
+    </a>
+    <a href="https://x.com/_leela_krishna?t=h5OXszuhRoxjLccQUnnJyg&s=09" target="_blank" class="social-icon">
+        <i class="fab fa-twitter"></i>
+    </a>
+    <a href="https://leelakrishna.vercel.app/" target="_blank" class="social-icon">
+        <i class="fab fa-github"></i>
+    </a>
+    <a href="https://www.instagram.com/leelakrishnavemulapalli?igsh=MTZqcGVkZnc4cnpvcQ==" target="_blank" class="social-icon">
+        <i class="fab fa-instagram"></i>
+    </a>
+    <a href="https://yuy0rwxtjilmpiku-hlqarf4jz.preview.co.dev/" target="_blank" class="social-icon">
+        <i class="fas fa-user-check"></i>
+    </a>
+</div>
+        <p>&copy; 2025 Vemulapalli Leela Krishna. All rights reserved.</p>
+    </footer>
+
+    <div class="scroll-to-top">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+
+    <script>
+
+// Register the ScrollTrigger plugin
+gsap.registerPlugin(ScrollTrigger);
+
+// Initialize Three.js scene
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+const renderer = new THREE.WebGLRenderer({ alpha: true }); // Add alpha for transparency
+renderer.setSize(window.innerWidth, window.innerHeight);
+renderer.setClearColor(0x000000, 0); // Transparent background
+document.querySelector('.three-background').appendChild(renderer.domElement);
+
+// Create torus geometry
+const geometry = new THREE.TorusGeometry(10, 3, 16, 100);
+const material = new THREE.MeshBasicMaterial({ color: 0xffd700, wireframe: true });
+const torus = new THREE.Mesh(geometry, material);
+scene.add(torus);
+
+camera.position.z = 30;
+
+// Add particles
+const particles = [];
+const particleCount = 100;
+const particleGeometry = new THREE.SphereGeometry(0.1, 8, 8);
+const particleMaterial = new THREE.MeshBasicMaterial({ color: 0xffffff });
+
+for (let i = 0; i < particleCount; i++) {
+    const particle = new THREE.Mesh(particleGeometry, particleMaterial);
+    particle.position.set(
+        Math.random() * 40 - 20,
+        Math.random() * 40 - 20,
+        Math.random() * 40 - 20
+    );
+    // Add velocity properties for smoother motion
+    particle.velocity = {
+        x: Math.random() * 0.02 - 0.01,
+        y: Math.random() * 0.02 + 0.01,
+        z: Math.random() * 0.02 - 0.01
+    };
+    particles.push(particle);
+    scene.add(particle);
+}
+
+// Animation loop
+function animate() {
+    requestAnimationFrame(animate);
+    
+    // Rotate torus
+    torus.rotation.x += 0.01;
+    torus.rotation.y += 0.01;
+    
+    // Move particles
+    particles.forEach(particle => {
+        particle.position.x += particle.velocity.x;
+        particle.position.y += particle.velocity.y;
+        particle.position.z += particle.velocity.z;
+        
+        // Reset particles when they move out of bounds
+        if (particle.position.y > 20) particle.position.y = -20;
+        if (particle.position.y < -20) particle.position.y = 20;
+        if (particle.position.x > 20) particle.position.x = -20;
+        if (particle.position.x < -20) particle.position.x = 20;
+        if (particle.position.z > 20) particle.position.z = -20;
+        if (particle.position.z < -20) particle.position.z = 20;
+    });
+    
+    renderer.render(scene, camera);
+}
+
+// Custom cursor functionality
+const cursor = document.querySelector('.custom-cursor');
+const cursorDot = document.querySelector('.cursor-dot');
+
+document.addEventListener('mousemove', (e) => {
+    gsap.to(cursor, {
+        x: e.clientX - 10,
+        y: e.clientY - 10,
+        duration: 0.23,
+        ease: 'power4.out'
+    });
+    gsap.to(cursorDot, {
+        x: e.clientX - 2,
+        y: e.clientY - 2,
+        duration: 0.1
+    });
+});
+
+// Add cursor effects for interactive elements
+document.querySelectorAll('a, button, .project-card, .skill-card, .social-icon, .project-btn, .blog-btn, .form-button').forEach(item => {
+    item.addEventListener('mouseenter', () => {
+        gsap.to(cursor, {
+            scale: 1.5,
+            duration: 0.3,
+            borderColor: "#ffd700"
+        });
+    });
+    item.addEventListener('mouseleave', () => {
+        gsap.to(cursor, {
+            scale: 1,
+            duration: 0.3,
+            borderColor: "#ffffff"
+        });
+    });
+});
+
+// Scroll text animation
+gsap.to('.scroll-text', {
+    xPercent: -50,
+    ease: "none",
+    scrollTrigger: {
+        trigger: "body",
+        start: "top top",
+        end: "bottom bottom",
+        scrub: 1
+    }
+});
+
+// Loading screen animation
+window.addEventListener('load', () => {
+    gsap.to('.loading-screen', {
+        duration: 1,
+        y: '-100%',
+        ease: 'power4.inOut',
+        onComplete: () => {
+            document.querySelector('.loading-screen').style.display = 'none';
+        }
+    });
+});
+
+// Animate sections on scroll
+gsap.utils.toArray('section').forEach(section => {
+    gsap.from(section, {
+        opacity: 0,
+        y: 50, 
+        duration: 0.8, 
+        scrollTrigger: {
+            trigger: section,
+            start: "top bottom-=100", 
+            toggleActions: "play none none none" 
+        }
+    });
+});
+
+// Reset contact section to visible (fixes potential issue with animation)
+gsap.set('#contact', { opacity: 1, y: 0 });
+
+// Add hover effects for interactive elements
+document.querySelectorAll('a, button, .project-card, .skill-card, .social-icon, .project-btn, .blog-btn, .form-button, .certification-card, .achievement-card, .contact-item').forEach(item => {
+    item.addEventListener('mouseenter', () => {
+        gsap.to(item, { 
+            scale: 1.05, 
+            duration: 0.3,
+            ease: "power2.out"
+        });
+    });
+    item.addEventListener('mouseleave', () => {
+        gsap.to(item, { 
+            scale: 1, 
+            duration: 0.3,
+            ease: "power2.out"
+        });
+    });
+});
+
+// Scroll to top button functionality
+const scrollToTopBtn = document.querySelector('.scroll-to-top');
+
+scrollToTopBtn.addEventListener('click', () => {
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+    });
+});
+
+// Show/hide scroll to top button
+window.addEventListener('scroll', () => {
+    if (window.scrollY > 500) {
+        scrollToTopBtn.classList.add('visible');
+    } else {
+        scrollToTopBtn.classList.remove('visible');
+    }
+});
+
+// Skills animation - Fixed version
+document.addEventListener('DOMContentLoaded', function() {
+    const container = document.getElementById('skills-container');
+    const tooltip = document.querySelector('.tooltip');
+    
+    if (!container) {
+        console.error('Skills container not found');
+        return;
+    }
+    
+    // Define skills with icons
+    // Define skills with icons
+const skills = [
+    { name: 'Python', category: 'Programming', icon: '<i class="fab fa-python"></i>' },
+    { name: 'C++', category: 'Programming', icon: '<i class="fas fa-code"></i>' },
+    { name: 'Bash', category: 'Programming', icon: '<i class="fas fa-terminal"></i>' },
+    { name: 'PX4', category: 'Drones & Robotics', icon: '<i class="fas fa-microchip"></i>' },
+    { name: 'ROS 2', category: 'Drones & Robotics', icon: '<i class="fas fa-robot"></i>' },
+    { name: 'GAZEBO', category: 'Drones & Robotics', icon: '<i class="fas fa-cubes"></i>' },
+    { name: 'ArUco Tracking', category: 'Computer Vision', icon: '<i class="fas fa-crosshairs"></i>' },
+    { name: 'YOLO', category: 'Deep Learning', icon: '<i class="fas fa-brain"></i>' },
+    { name: 'PyTorch', category: 'Deep Learning', icon: '<i class="fas fa-fire"></i>' },
+    { name: 'OpenCV', category: 'Computer Vision', icon: '<i class="fas fa-eye"></i>' },
+    { name: 'Raspberry Pi', category: 'Embedded Systems', icon: '<i class="fab fa-raspberry-pi"></i>' },
+    { name: 'MATLAB', category: 'Software Packages', icon: '<i class="fas fa-calculator"></i>' },
+    { name: 'AutoCAD', category: 'Software Packages', icon: '<i class="fas fa-drafting-compass"></i>' },
+    { name: 'Fusion 360', category: 'Software Packages', icon: '<i class="fas fa-cube"></i>' },
+    { name: 'HTML', category: 'Web Development', icon: '<i class="fab fa-html5"></i>' },
+    { name: 'CSS', category: 'Web Development', icon: '<i class="fab fa-css3-alt"></i>' },
+    { name: 'JavaScript', category: 'Web Development', icon: '<i class="fab fa-js"></i>' }
+];
+    // Set base dimensions
+    let containerWidth = container.clientWidth;
+    let containerHeight = container.clientHeight;
+    let boxRadius = Math.min(containerWidth, containerHeight) * 0.45; // Use more of the container
+    
+    // Create skill elements
+    skills.forEach((skill, index) => {
+        // Create skill element
+        const skillElement = document.createElement('div');
+        skillElement.className = 'skill';
+        skillElement.innerHTML = skill.icon;
+        skillElement.dataset.name = skill.name;
+        skillElement.dataset.category = skill.category;
+        skillElement.dataset.index = index;
+        
+        // Set unique animation duration for this skill's orbit
+        skillElement.style.animationDuration = `${5 + (index * 0.5)}s`;
+        
+        // Add enhanced glow effect
+        const hue = (index * 30) % 360; // Different color for each skill
+        skillElement.style.boxShadow = `0 0 20px rgba(255, 215, 0, 0.25), 0 0 40px rgba(255, 215, 0, 0.1)`;
+        
+        // Add event listeners for tooltip
+        skillElement.addEventListener('mouseover', function(e) {
+            if (tooltip) {
+                tooltip.textContent = `${skill.name} - ${skill.category}`;
+                tooltip.classList.add('visible');
+                positionTooltip(e);
+            }
+        });
+        
+        skillElement.addEventListener('mousemove', positionTooltip);
+        
+        skillElement.addEventListener('mouseout', function() {
+            if (tooltip) {
+                tooltip.classList.remove('visible');
+            }
+        });
+        
+        container.appendChild(skillElement);
+    });
+    
+    // Function to position tooltip
+    function positionTooltip(e) {
+        if (!tooltip) return;
+        
+        const containerRect = container.getBoundingClientRect();
+        tooltip.style.left = `${e.clientX - containerRect.left + 15}px`;
+        tooltip.style.top = `${e.clientY - containerRect.top + 15}px`;
+    }
+    
+    // Add click interaction for legend items
+    document.querySelectorAll('.skill-icon-item').forEach(item => {
+        item.addEventListener('click', function() {
+            const skillName = this.dataset.skill;
+            
+            // Find the corresponding skill element and highlight it
+            const skillElements = document.querySelectorAll('.skill');
+            skillElements.forEach(el => {
+                if (el.dataset.name === skillName) {
+                    // Highlight the clicked skill
+                    el.style.transform = 'scale(1.4)';
+                    el.style.zIndex = '100';
+                    el.style.boxShadow = '0 0 40px rgba(255, 215, 0, 0.8)';
+                    el.style.borderColor = 'var(--primary-color)';
+                    
+                    // Add flash effect to icon
+                    const icon = el.querySelector('i');
+                    if (icon) {
+                        icon.style.color = 'var(--primary-color)';
+                        icon.style.textShadow = '0 0 15px var(--primary-color)';
+                    }
+                    
+                    // Reset after a delay
+                    setTimeout(() => {
+                        el.style.transform = '';
+                        el.style.zIndex = '';
+                        el.style.boxShadow = '';
+                        el.style.borderColor = '';
+                        if (icon) {
+                            icon.style.color = '';
+                            icon.style.textShadow = '';
+                        }
+                    }, 1500);
+                }
+            });
+        });
+    });
+    
+    // Animation variables
+    let time = 0;
+    let isUserInteracting = false;
+    let interactionSpeed = { x: 0, y: 0 };
+    
+    // Track mouse position for interactive movement
+    container.addEventListener('mousemove', (e) => {
+        const rect = container.getBoundingClientRect();
+        const centerX = rect.width / 2;
+        const centerY = rect.height / 2;
+        
+        // Calculate distance from center
+        const mouseX = e.clientX - rect.left - centerX;
+        const mouseY = e.clientY - rect.top - centerY;
+        
+        // Calculate normalized interaction speed based on distance from center
+        interactionSpeed.x = mouseX / centerX * 0.3;
+        interactionSpeed.y = mouseY / centerY * 0.3;
+        
+        isUserInteracting = true;
+        
+        // Reset interactive flag after delay
+        clearTimeout(window.interactionTimer);
+        window.interactionTimer = setTimeout(() => {
+            isUserInteracting = false;
+            // Smooth return to normal animation
+            let returnInterval = setInterval(() => {
+                interactionSpeed.x *= 0.9;
+                interactionSpeed.y *= 0.9;
+                if (Math.abs(interactionSpeed.x) < 0.01 && Math.abs(interactionSpeed.y) < 0.01) {
+                    interactionSpeed.x = 0;
+                    interactionSpeed.y = 0;
+                    clearInterval(returnInterval);
+                }
+            }, 50);
+        }, 1000);
+    });
+    
+    function showProjectMessage() {
+    // Smooth scroll to contact section
+    document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
+    
+    // Show message after a short delay to allow scroll to complete
+    setTimeout(() => {
+        alert('Contact owner for more project details');
+        
+        // Optional: Pre-fill the subject field
+        const subjectField = document.getElementById('subject');
+        if (subjectField) {
+            subjectField.value = 'Inquiry about project details';
+        }
+    }, 1000);
+}
+    function animateSkills() {
+    time += 0.008;
+    
+    const skillElements = document.querySelectorAll('.skill');
+    const skillCount = skillElements.length;
+    
+    const innerOrbitCount = Math.ceil(skillCount / 2);
+    const outerOrbitCount = skillCount - innerOrbitCount;
+    
+    skillElements.forEach((skill, i) => {
+        if (!skill.orbitParams) {
+            const isInnerOrbit = i < innerOrbitCount;
+            const indexInOrbit = isInnerOrbit ? i : i - innerOrbitCount;
+            const totalInOrbit = isInnerOrbit ? innerOrbitCount : outerOrbitCount;
+            
+            skill.orbitParams = {
+                isInner: isInnerOrbit,
+                position: indexInOrbit / totalInOrbit,
+                speed: isInnerOrbit ? 0.6 : 0.4,
+                radius: boxRadius * (isInnerOrbit ? 0.45 : 0.75)
+            };
+        }
+        
+        const params = skill.orbitParams;
+        const baseAngle = params.position * Math.PI * 2;
+        const rotationAngle = baseAngle + (time * params.speed);
+        
+        let x = Math.cos(rotationAngle) * params.radius;
+        let y = Math.sin(rotationAngle) * params.radius;
+        
+        if (isUserInteracting || (Math.abs(interactionSpeed.x) > 0.01 || Math.abs(interactionSpeed.y) > 0.01)) {
+            const mouseRotationX = interactionSpeed.y * 0.1;
+            const mouseRotationY = interactionSpeed.x * 0.1;
+            
+            const oldX = x;
+            x = x * Math.cos(mouseRotationY) - y * Math.sin(mouseRotationX);
+            y = oldX * Math.sin(mouseRotationY) + y * Math.cos(mouseRotationX);
+        }
+        
+        const centerX = containerWidth / 2;
+        const centerY = containerHeight / 2;
+        
+        const scale = params.isInner ? 0.9 : 0.85;
+        const opacity = params.isInner ? 0.95 : 0.85;
+        const glowIntensity = params.isInner ? 0.25 : 0.15;
+        
+        skill.style.transform = `scale(${scale})`;
+        skill.style.left = `${centerX + x - (skill.offsetWidth / 2)}px`;
+        skill.style.top = `${centerY + y - (skill.offsetHeight / 2)}px`;
+        skill.style.zIndex = params.isInner ? 60 : 40;
+        skill.style.opacity = opacity;
+        skill.style.boxShadow = `0 0 15px rgba(255, 215, 0, ${glowIntensity}), 0 0 30px rgba(255, 215, 0, ${glowIntensity/3})`;
+    });
+    
+    requestAnimationFrame(animateSkills);
+}
+    // Keep everything transparent except specific elements
+    document.body.style.background = 'transparent';
+    document.querySelector('.container').style.background = 'transparent';
+    document.getElementById('skills-container').style.background = 'transparent';
+    
+    // Check if skills-legend exists before trying to set its background
+    const skillsLegend = document.querySelector('.skills-legend');
+    if (skillsLegend) {
+        skillsLegend.style.background = 'transparent';
+    }
+    
+    // Make orbit trails more visible
+    document.querySelectorAll('.orbit-trail').forEach((trail, index) => {
+        trail.style.borderColor = 'rgba(255, 215, 0, 0.15)';
+        trail.style.boxShadow = '0 0 30px rgba(255, 215, 0, 0.05)';
+    });
+    
+    // Handle window resize
+    function handleResize() {
+        containerWidth = container.clientWidth;
+        containerHeight = container.clientHeight;
+        boxRadius = Math.min(containerWidth, containerHeight) * 0.45;
+    }
+    
+    window.addEventListener('resize', handleResize);
+    
+    // Start animation
+    animateSkills();
+});
+
+// Initialize skill bars function
+function initSkillBars() {
+    // Check if skill bars exist before initializing
+    const skillBars = document.querySelectorAll('.skill-bar');
+    if (skillBars.length === 0) return;
+    
+    skillBars.forEach(bar => {
+        const percent = bar.getAttribute('data-percent');
+        const skillProgress = bar.querySelector('.skill-progress');
+        
+        if (skillProgress) {
+            ScrollTrigger.create({
+                trigger: bar,
+                start: "top bottom-=100",
+                onEnter: () => {
+                    skillProgress.style.width = percent + '%';
+                }
+            });
+        }
+    });
+}
+
+// Responsive handling
+function handleResize() {
+    // Update renderer size
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    camera.aspect = window.innerWidth / window.innerHeight;
+    camera.updateProjectionMatrix();
+
+    // Adjust scroll text size for mobile
+    const scrollText = document.querySelector('.scroll-text');
+    if (scrollText) {
+        scrollText.style.fontSize = window.innerWidth <= 768 ? '5rem' : '10rem';
+    }
+}
+
+// Smooth scrolling for navigation
+document.querySelectorAll('nav a').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        const targetId = this.getAttribute('href');
+        const targetSection = document.querySelector(targetId);
+        
+        if (targetSection) {
+            window.scrollTo({
+                top: targetSection.offsetTop,
+                behavior: 'smooth'
+            });
+        }
+    });
+});
+
+// Handle form submission
+// Handle form submission with Formspree
+const contactForm = document.getElementById('contactForm');
+const successMessage = document.getElementById('success-message');
+if (contactForm) {
+    contactForm.addEventListener('submit', async function(event) {
+        event.preventDefault();
+        const formData = new FormData(contactForm);
+        const response = await fetch(contactForm.action, {
+            method: contactForm.method,
+            body: formData,
+            headers: { 'Accept': 'application/json' }
+        });
+        if (response.ok) {
+            contactForm.reset();
+            successMessage.style.display = 'block';
+        } else {
+            alert("Oops! Something went wrong. Please try again.");
+        }
+    });
+}
+// Add typing animation to the loading text
+const loadingText = document.querySelector('.loading-text');
+if (loadingText) {
+    const text = loadingText.textContent;
+    loadingText.textContent = '';
+
+    let charIndex = 0;
+    function typeText() {
+        if (charIndex < text.length) {
+            loadingText.textContent += text.charAt(charIndex);
+            charIndex++;
+            setTimeout(typeText, 150);
+        } else {
+            // Reset and repeat
+            setTimeout(() => {
+                loadingText.textContent = '';
+                charIndex = 0;
+                typeText();
+            }, 1000);
+        }
+    }
+    typeText();
+}
+
+// Animate progress bars on scroll
+document.querySelectorAll('progress').forEach(progress => {
+    ScrollTrigger.create({
+        trigger: progress,
+        start: "top bottom-=100",
+        onEnter: () => {
+            const value = progress.getAttribute('value');
+            progress.style.setProperty('--progress-width', `${value}%`);
+        }
+    });
+});
+
+
+// Add parallax effect to header image
+const headerImg = document.querySelector('header img');
+if (headerImg) {
+    ScrollTrigger.create({
+        trigger: 'header',
+        start: 'top top',
+        end: 'bottom top',
+        onUpdate: self => {
+            const scrollY = self.progress * 100;
+            headerImg.style.transform = `translateY(${scrollY * 0.2}px)`;
+        }
+    });
+}
+
+// Start animation and initialize everything
+window.addEventListener('resize', handleResize);
+handleResize(); // Initial call to set correct sizes
+initSkillBars();
+animate(); // Start the three.js animation loop
+    </script>
+</body>
+</html>
