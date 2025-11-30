@@ -1832,11 +1832,7 @@ document.addEventListener('click', (e) => {
             card.style.transition = `opacity 0.5s ease ${index * 0.1}s, transform 0.5s ease ${index * 0.1}s`;
             observer.observe(card);
         });
-
-        document.getElementById('contactForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-           document.getElementById('contactForm').addEventListener('submit', async function(e) {
+document.getElementById('contactForm').addEventListener('submit', async function(e) {
             e.preventDefault();
             
             const form = this;
@@ -1862,7 +1858,7 @@ document.addEventListener('click', (e) => {
                     
                     setTimeout(() => {
                         successMessage.style.display = 'none';
-                    }, 1500);
+                    }, 3000);
                 } else {
                     const data = await response.json();
                     if (data.errors) {
