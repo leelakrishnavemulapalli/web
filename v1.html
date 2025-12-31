@@ -3839,13 +3839,12 @@ document.getElementById('contactForm').addEventListener('submit', async function
         document.querySelector('#home').style.opacity = '1';
         document.querySelector('#home').style.transform = 'translateY(0)';
         document.addEventListener('contextmenu', e => e.preventDefault());
-
+document.addEventListener('contextmenu', e => e.preventDefault());
 document.addEventListener('keydown', e => {
   if (e.key === "F12" || (e.ctrlKey && e.shiftKey && e.key === "I")) {
     e.preventDefault();
   }
 });
-    
     </script>
 </body>
 </html>
