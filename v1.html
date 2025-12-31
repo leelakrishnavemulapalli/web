@@ -1946,6 +1946,1908 @@ if (contactForm) {
 window.addEventListener('resize', handleResize);
 handleResize();
 animate();
+        <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vemulapalli Leela Krishna - Portfolio</title>
+    <meta name="description" content="Vemulapalli Leela Krishna's portfolio showcasing skills in robotics, drones, and aerospace.">
+    <meta name="google-site-verification" content="YODKWTqzcmLWK4tCncidc3OSbCmEkGZjH6iMKq4sB-s" />
+    <link rel="icon" href="https://raw.githubusercontent.com/leelakrishnavemulapalli/web/refs/heads/main/VEMULAPALLILEELAKRISHNA.png" type="image/png">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --primary: #00fff5;
+    --secondary: #ff006e;
+    --accent: #8338ec;
+    --bg-dark: #0a0a0f;
+    --bg-card: #141420;
+    --text: #ffffff;
+    --text-dim: #8892b0;
+}
+
+body {
+    font-family: 'Space Grotesk', sans-serif;
+    background: var(--bg-dark);
+    color: var(--text);
+    line-height: 1.6;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+}
+
+.grid-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        linear-gradient(rgba(0, 255, 245, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 255, 245, 0.03) 1px, transparent 1px);
+    background-size: 50px 50px;
+    z-index: 0;
+    pointer-events: none;
+}
+
+.gradient-orb {
+    position: fixed;
+    width: 600px;
+    height: 600px;
+    border-radius: 50%;
+    filter: blur(100px);
+    opacity: 0.15;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.orb-1 {
+    background: var(--primary);
+    top: -200px;
+    right: -200px;
+    animation: float 20s infinite ease-in-out;
+}
+
+.orb-2 {
+    background: var(--secondary);
+    bottom: -200px;
+    left: -200px;
+    animation: float 25s infinite ease-in-out reverse;
+}
+
+@keyframes float {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    33% { transform: translate(100px, -100px) scale(1.1); }
+    66% { transform: translate(-100px, 100px) scale(0.9); }
+}
+
+nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: linear-gradient(135deg, rgba(10, 10, 15, 0.85) 0%, rgba(20, 20, 32, 0.85) 100%);
+    backdrop-filter: blur(20px) saturate(180%);
+    padding: 1.2rem 5%;
+    z-index: 1000;
+    border-bottom: 2px solid transparent;
+    border-image: linear-gradient(90deg, transparent, var(--primary), var(--accent), transparent) 1;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4), 0 2px 8px rgba(0, 255, 245, 0.1);
+    transition: all 0.3s ease;
+}
+
+nav:hover {
+    background: linear-gradient(135deg, rgba(10, 10, 15, 0.95) 0%, rgba(20, 20, 32, 0.95) 100%);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5), 0 4px 16px rgba(0, 255, 245, 0.15);
+}
+
+nav .container {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2rem;
+}
+
+.nav-brand {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--primary);
+    letter-spacing: 2px;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 1.5rem;
+    flex-wrap: nowrap;
+    align-items: center;
+}
+
+nav a {
+    color: var(--text-dim);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.9rem;
+    letter-spacing: 0.5px;
+    transition: all 0.3s;
+    position: relative;
+}
+
+nav a::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--primary);
+    transition: width 0.3s;
+}
+
+nav a:hover,
+nav a.active {
+    color: var(--primary);
+}
+
+nav a:hover::after,
+nav a.active::after {
+    width: 100%;
+}
+
+.hamburger {
+    display: none;
+    flex-direction: column;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    z-index: 1001;
+}
+
+.hamburger span {
+    width: 25px;
+    height: 3px;
+    background: var(--primary);
+    margin: 3px 0;
+    transition: all 0.3s;
+    border-radius: 3px;
+}
+
+.hamburger.active span:nth-child(1) {
+    transform: rotate(45deg) translate(7px, 7px);
+}
+
+.hamburger.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(8px, -8px);
+}
+
+.hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 140px 5% 4rem;
+    position: relative;
+    z-index: 2;
+}
+
+.hero-wrapper {
+    max-width: 1400px;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+}
+
+@supports (container-type: inline-size) {
+    .hero {
+        container-type: inline-size;
+    }
+}
+
+.greeting-text {
+    font-size: 1.3rem;
+    color: var(--primary);
+    margin-bottom: 1rem;
+    font-weight: 500;
+    opacity: 0;
+    animation: fadeInUp 0.8s forwards 0.2s;
+}
+
+.typing-container {
+    min-height: 2rem;
+    margin-bottom: 1rem;
+}
+
+.typed-text {
+    font-size: 1.1rem;
+    color: var(--text-dim);
+    font-family: 'JetBrains Mono', monospace;
+}
+
+.cursor {
+    display: inline-block;
+    width: 2px;
+    height: 1.2rem;
+    background: var(--primary);
+    margin-left: 2px;
+    animation: blink 0.7s infinite;
+}
+
+@keyframes blink {
+    0%, 49% { opacity: 1; }
+    50%, 100% { opacity: 0; }
+}
+
+.hero-label {
+    display: inline-block;
+    padding: 0.5rem 1.5rem;
+    background: rgba(0, 255, 245, 0.1);
+    border: 1px solid var(--primary);
+    border-radius: 50px;
+    color: var(--primary);
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-bottom: 2rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    opacity: 0;
+    animation: fadeInUp 0.8s forwards 0.4s;
+}
+
+.hero h1 {
+    font-size: clamp(3rem, 8vw, 5.5rem);
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    background: linear-gradient(135deg, var(--text) 0%, var(--primary) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    line-height: 1.1;
+    opacity: 0;
+    animation: fadeInUp 0.8s forwards 0.6s;
+}
+
+.hero .subtitle {
+    font-size: clamp(1.2rem, 3vw, 1.6rem);
+    color: var(--text-dim);
+    margin-bottom: 2rem;
+    font-weight: 300;
+    opacity: 0;
+    animation: fadeInUp 0.8s forwards 0.8s;
+}
+
+.hero-description {
+    font-size: 1.1rem;
+    color: var(--text-dim);
+    max-width: 700px;
+    margin-bottom: 3rem;
+    line-height: 1.8;
+    opacity: 0;
+    animation: fadeInUp 0.8s forwards 1s;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.photo-container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    animation: fadeInRight 1s forwards 0.5s;
+}
+
+@keyframes fadeInRight {
+    from {
+        opacity: 0;
+        transform: translateX(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.photo-wrapper {
+    position: relative;
+    width: 400px;
+    height: 400px;
+}
+
+.photo-glow {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--primary), var(--accent));
+    filter: blur(40px);
+    opacity: 0.3;
+    animation: pulse 3s infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); opacity: 0.3; }
+    50% { transform: scale(1.1); opacity: 0.5; }
+}
+
+.photo-frame {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    padding: 8px;
+    background: linear-gradient(135deg, var(--primary), var(--accent), var(--secondary));
+    animation: pulse 3s infinite; 
+}
+
+@keyframes rotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+.photo-inner {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    overflow: hidden;
+    background: var(--bg-dark);
+    border: 4px solid var(--bg-dark);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.profile-photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.photo-placeholder {
+    font-size: 8rem;
+    color: var(--primary);
+    opacity: 0.3;
+}
+
+.floating-icons {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+}
+
+.float-icon {
+    position: absolute;
+    font-size: 2rem;
+    color: var(--primary);
+    opacity: 0.6;
+    animation: floatIcon 4s infinite ease-in-out;
+}
+
+.float-icon:nth-child(1) {
+    top: 10%;
+    left: -10%;
+    animation-delay: 0s;
+}
+
+.float-icon:nth-child(2) {
+    top: 20%;
+    right: -10%;
+    animation-delay: 1s;
+}
+
+.float-icon:nth-child(3) {
+    bottom: 20%;
+    left: -5%;
+    animation-delay: 2s;
+}
+
+.float-icon:nth-child(4) {
+    bottom: 10%;
+    right: -5%;
+    animation-delay: 3s;
+}
+
+@keyframes floatIcon {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-20px); }
+}
+
+.cta-group {
+    display: flex;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+    opacity: 0;
+    animation: fadeInUp 0.8s forwards 1.2s;
+}
+
+.btn {
+    padding: 1rem 2.5rem;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.8rem;
+    font-size: 1rem;
+    letter-spacing: 0.5px;
+    border: 2px solid transparent;
+    cursor: pointer;
+}
+
+.btn-primary {
+    background: var(--primary);
+    color: #000;
+    box-shadow: 0 0 30px rgba(0, 255, 245, 0.3);
+}
+
+.btn-primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 40px rgba(0, 255, 245, 0.5);
+}
+
+.btn-outline {
+    border: 2px solid var(--primary);
+    color: var(--primary);
+    background: transparent;
+}
+
+.btn-outline:hover {
+    background: var(--primary);
+    color: #000;
+}
+
+section {
+    padding: 6rem 5%;
+    max-width: 1400px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 2;
+}
+
+.section-header {
+    text-align: center;
+    margin-bottom: 4rem;
+}
+
+.section-label {
+    display: inline-block;
+    padding: 0.4rem 1.2rem;
+    background: rgba(131, 56, 236, 0.1);
+    border: 1px solid var(--accent);
+    border-radius: 50px;
+    color: var(--accent);
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+h2 {
+    font-size: clamp(2.5rem, 5vw, 3.5rem);
+    margin-bottom: 1rem;
+    font-weight: 700;
+    background: linear-gradient(135deg, var(--text) 0%, var(--primary) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.section-description {
+    font-size: 1.15rem;
+    color: var(--text-dim);
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.timeline {
+    position: relative;
+    padding: 2rem 0;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.timeline::before {
+    content: '';
+    position: absolute;
+    left: 180px; 
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: linear-gradient(180deg, var(--primary) 0%, var(--accent) 100%);
+}
+
+.timeline-item {
+    position: relative;
+    padding-left: 250px;
+    margin-bottom: 3rem;
+}
+
+.timeline-item::before {
+    content: '';
+    position: absolute;
+    left: 171px;
+    top: 5px;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: var(--primary);
+    border: 4px solid var(--bg-dark);
+    box-shadow: 0 0 20px rgba(0, 255, 245, 0.5);
+}
+
+.timeline-date {
+    position: absolute;
+    left: 0;
+    top: 0;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.85rem;
+    color: var(--primary);
+    font-weight: 500;
+    width: 150px; 
+    text-align: right;
+    padding-right: 20px;
+}
+
+.timeline-item h4 {
+    color: var(--text);
+    font-size: 1.4rem;
+    margin-bottom: 0.5rem;
+}
+
+.timeline-item .organization {
+    color: var(--accent);
+    font-weight: 600;
+    margin-bottom: 0.8rem;
+    display: block;
+}
+
+.achievements-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+.achievement-card {
+    background: var(--bg-card);
+    padding: 2.5rem;
+    border-radius: 16px;
+    border: 1px solid rgba(0, 255, 245, 0.1);
+    transition: all 0.4s;
+    position: relative;
+    overflow: hidden;
+}
+
+.achievement-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--primary), var(--accent));
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.4s;
+}
+
+.achievement-card:hover::before {
+    transform: scaleX(1);
+}
+
+.achievement-card:hover {
+    transform: translateY(-10px);
+    border-color: var(--primary);
+    box-shadow: 0 20px 60px rgba(0, 255, 245, 0.2);
+}
+
+.achievement-icon {
+    font-size: 3rem;
+    color: var(--primary);
+    margin-bottom: 1.5rem;
+    display: block;
+}
+
+.achievement-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: var(--primary);
+}
+
+.achievement-card p {
+    color: var(--text-dim);
+    line-height: 1.7;
+}
+
+.achievement-card ul {
+    list-style: none;
+    padding: 0;
+}
+
+.achievement-card ul li {
+    color: var(--text-dim);
+    padding: 0.3rem 0;
+    line-height: 1.6;
+}
+
+.achievement-card ul li::before {
+    content: "→";
+    color: var(--primary);
+    margin-right: 8px;
+    font-weight: bold;
+}
+
+.skill-badges {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 3rem;
+}
+
+.skill-badge {
+    padding: 0.6rem 1.5rem;
+    background: rgba(0, 255, 245, 0.1);
+    border: 1px solid rgba(0, 255, 245, 0.3);
+    border-radius: 50px;
+    font-size: 0.95rem;
+    color: var(--primary);
+    font-family: 'JetBrains Mono', monospace;
+    transition: all 0.3s;
+    opacity: 0;
+    animation: fadeInUp 0.6s forwards;
+}
+
+.skill-badge:nth-child(n) {
+    animation-delay: calc(0.05s * var(--i));
+}
+
+.skill-badge:hover {
+    background: rgba(0, 255, 245, 0.2);
+    transform: translateY(-3px);
+    box-shadow: 0 5px 20px rgba(0, 255, 245, 0.3);
+}
+
+.filter-buttons {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin: 3rem 0;
+}
+
+.filter-btn {
+    padding: 0.6rem 1.5rem;
+    background: transparent;
+    border: 2px solid rgba(0, 255, 245, 0.3);
+    color: var(--text-dim);
+    border-radius: 50px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.filter-btn::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: var(--primary);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+    z-index: -1;
+}
+
+.filter-btn:hover::before,
+.filter-btn.active::before {
+    width: 300px;
+    height: 300px;
+}
+
+.filter-btn:hover,
+.filter-btn.active {
+    color: #000;
+    border-color: var(--primary);
+    font-weight: 600;
+}
+
+.project-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 2.5rem;
+    margin-top: 3rem;
+}
+
+.project-card {
+    background: var(--bg-card);
+    border-radius: 20px;
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    border: 1px solid rgba(0, 255, 245, 0.1);
+    position: relative;
+    opacity: 1;
+    transform: scale(1);
+    transform-style: preserve-3d;
+    perspective: 1000px;
+}
+
+.project-card.hidden {
+    display: none;
+}
+
+.project-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--primary), var(--accent), var(--secondary));
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.4s;
+}
+
+.project-card::after {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: linear-gradient(135deg, var(--primary), var(--accent), var(--secondary));
+    border-radius: 20px;
+    z-index: -1;
+    opacity: 0;
+    filter: blur(20px);
+    transition: opacity 0.4s;
+}
+
+.project-card:hover::before {
+    transform: scaleX(1);
+}
+
+.project-card:hover::after {
+    opacity: 0.4;
+}
+
+.project-card:hover {
+    transform: translateY(-15px) rotateX(2deg);
+    border-color: var(--primary);
+    box-shadow: 0 25px 80px rgba(0, 255, 245, 0.3), 
+                0 0 40px rgba(131, 56, 236, 0.2);
+}
+
+.project-image {
+    width: 100%;
+    height: 280px;
+    background: var(--bg-card);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 4rem;
+    color: rgba(255, 255, 255, 0.2);
+    padding: 30px;
+    position: relative;
+    overflow: hidden;
+}
+
+.project-image-circle {
+    width: 220px;
+    height: 220px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 4px solid transparent;
+    background: linear-gradient(var(--bg-dark), var(--bg-dark)) padding-box,
+                linear-gradient(135deg, var(--primary), var(--accent), var(--secondary)) border-box;
+    box-shadow: 0 0 30px rgba(0, 255, 245, 0.4);
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: rotateGradient 8s linear infinite;
+}
+
+@keyframes rotateGradient {
+    from { 
+        filter: hue-rotate(0deg);
+    }
+    to { 
+        filter: hue-rotate(360deg);
+    }
+}
+
+.project-image-circle img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.project-image-circle i {
+    font-size: 4rem;
+    color: rgba(0, 255, 245, 0.3);
+}
+
+.project-content {
+    padding: 2rem;
+}
+
+.project-content h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: var(--text);
+    transition: color 0.3s;
+}
+
+.project-card:hover .project-content h3 {
+    color: var(--primary);
+}
+
+.project-content p {
+    transition: color 0.3s;
+}
+
+.project-card:hover .project-content p {
+    color: var(--text);
+}
+
+.tech-stack {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+    margin: 1.5rem 0;
+}
+
+.tech-badge {
+    padding: 0.4rem 1rem;
+    background: linear-gradient(135deg, rgba(0, 255, 245, 0.1), rgba(131, 56, 236, 0.1));
+    border: 1px solid rgba(0, 255, 245, 0.3);
+    border-radius: 6px;
+    font-size: 0.85rem;
+    color: var(--primary);
+    font-family: 'JetBrains Mono', monospace;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+.tech-badge::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(0, 255, 245, 0.3), transparent);
+    transition: left 0.5s;
+}
+
+.tech-badge:hover::before {
+    left: 100%;
+}
+
+.tech-badge:hover {
+    background: rgba(0, 255, 245, 0.2);
+    transform: scale(1.08) translateY(-2px);
+    border-color: var(--primary);
+    box-shadow: 0 4px 15px rgba(0, 255, 245, 0.4);
+}
+
+.publication-card {
+    background: var(--bg-card);
+    padding: 2.5rem;
+    border-radius: 16px;
+    border-left: 4px solid var(--accent);
+    margin-top: 2rem;
+    transition: all 0.3s;
+}
+
+.publication-card:hover {
+    transform: translateX(10px);
+    box-shadow: 0 10px 40px rgba(131, 56, 236, 0.2);
+}
+
+.pub-badge {
+    display: inline-block;
+    padding: 0.4rem 1rem;
+    background: rgba(255, 215, 0, 0.1);
+    border: 1px solid rgba(255, 215, 0, 0.3);
+    border-radius: 50px;
+    color: #ffd700;
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    letter-spacing: 1px;
+}
+
+.contact-section {
+    background: var(--bg-card);
+    border-radius: 20px;
+    padding: 4rem;
+    border: 1px solid rgba(0, 255, 245, 0.1);
+}
+
+.contact-form {
+    max-width: 700px;
+    margin: 3rem auto 0;
+}
+
+.form-group {
+    margin-bottom: 2rem;
+}
+
+.form-label {
+    display: block;
+    margin-bottom: 0.8rem;
+    color: var(--text);
+    font-weight: 500;
+    font-size: 1rem;
+}
+
+.form-input,
+.form-textarea {
+    width: 100%;
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(0, 255, 245, 0.2);
+    border-radius: 8px;
+    color: var(--text);
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1rem;
+    transition: all 0.3s;
+}
+
+.form-input:focus,
+.form-textarea:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 20px rgba(0, 255, 245, 0.2);
+}
+
+.form-textarea {
+    min-height: 150px;
+    resize: vertical;
+}
+
+.social-links {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    margin-top: 3rem;
+}
+
+.social-link {
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+    background: rgba(0, 255, 245, 0.1);
+    border: 1px solid rgba(0, 255, 245, 0.3);
+    color: var(--primary);
+    font-size: 1.5rem;
+    transition: all 0.3s;
+    text-decoration: none;
+}
+
+.social-link:hover {
+    background: var(--primary);
+    color: #000;
+    transform: translateY(-5px) rotate(5deg);
+    box-shadow: 0 10px 30px rgba(0, 255, 245, 0.4);
+}
+
+footer {
+    text-align: center;
+    padding: 3rem 5%;
+    color: var(--text-dim);
+    border-top: 1px solid rgba(0, 255, 245, 0.1);
+    position: relative;
+    z-index: 2;
+}
+
+.success-message {
+    display: none;
+    padding: 1rem;
+    background: rgba(0, 255, 245, 0.1);
+    border: 1px solid var(--primary);
+    border-radius: 8px;
+    color: var(--primary);
+    text-align: center;
+    margin-top: 1rem;
+}
+
+
+@media (max-width: 1024px) {
+    nav ul {
+        gap: 1rem;
+    }
+    
+    nav a {
+        font-size: 0.85rem;
+    }
+
+    .hero-wrapper {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+    }
+
+    .photo-wrapper {
+        width: 300px;
+        height: 300px;
+    }
+
+    .photo-container {
+        order: -1;
+    }
+    
+    .timeline::before {
+        left: 150px;
+    }
+    
+    .timeline-item {
+        padding-left: 200px;
+    }
+    
+    .timeline-item::before {
+        left: 141px;
+    }
+    
+    .timeline-date {
+        width: 120px;
+    }
+}
+
+/* Mobile devices */
+@media (max-width: 768px) {
+    .hamburger {
+        display: flex;
+    }
+
+    nav ul {
+        position: fixed;
+        left: -100%;
+        top: 75px;
+        flex-direction: column;
+        background: rgba(10, 10, 15, 0.98);
+        width: 100%;
+        text-align: center;
+        transition: left 0.3s ease-in-out;
+        box-shadow: 0 10px 27px rgba(0, 0, 0, 0.3);
+        padding: 2rem 0;
+        gap: 0;
+        border-top: 1px solid rgba(0, 255, 245, 0.1);
+        max-height: calc(100vh - 75px);
+        overflow-y: auto;
+    }
+
+    nav ul.active {
+        left: 0;
+    }
+
+    nav ul li {
+        width: 100%;
+        padding: 0.8rem 0;
+        border-bottom: 1px solid rgba(0, 255, 245, 0.05);
+    }
+
+    nav a {
+        font-size: 1.1rem;
+        display: block;
+        padding: 0.5rem 0;
+    }
+
+    .nav-brand {
+        font-size: 1.2rem;
+    }
+
+    .hero {
+        padding: 120px 5% 2rem; 
+        min-height: auto;
+    }
+
+    .hero h1 {
+        font-size: 2.5rem;
+    }
+    
+    .hero-description {
+        font-size: 1rem;
+    }
+
+    .photo-wrapper {
+        width: 250px;
+        height: 250px;
+    }
+
+    .project-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    .achievements-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .timeline::before {
+        left: 20px;
+    }
+
+    .timeline-item {
+        padding-left: 60px;
+    }
+
+    .timeline-item::before {
+        left: 11px;
+    }
+
+    .timeline-date {
+        position: static;
+        display: block;
+        margin-bottom: 0.5rem;
+        text-align: left;
+        width: auto;
+        padding-right: 0;
+    }
+
+    .contact-section {
+        padding: 2rem 1.5rem;
+    }
+
+    .filter-buttons {
+        gap: 0.5rem;
+    }
+
+    .filter-btn {
+        padding: 0.5rem 1rem;
+        font-size: 0.85rem;
+    }
+    
+    section {
+        padding: 4rem 5%;
+    }
+    
+    .cta-group {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    
+    .btn {
+        width: 100%;
+        justify-content: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .nav-brand {
+        font-size: 1rem;
+    }
+    
+    .hero h1 {
+        font-size: 2rem;
+    }
+    
+    .photo-wrapper {
+        width: 200px;
+        height: 200px;
+    }
+    
+    .float-icon {
+        font-size: 1.5rem;
+    }
+    
+    h2 {
+        font-size: 2rem;
+    }
+    
+    .skill-badge {
+        font-size: 0.85rem;
+        padding: 0.5rem 1rem;
+    }
+    
+    .project-content {
+        padding: 1.5rem;
+    }
+    
+    .social-link {
+        width: 50px;
+        height: 50px;
+        font-size: 1.2rem;
+    }
+}
+    </style>
+</head>
+<body>
+    <div class="grid-bg"></div>
+    <div class="gradient-orb orb-1"></div>
+    <div class="gradient-orb orb-2"></div>
+
+    <nav>
+        <div class="container">
+        <div class="nav-brand">VLK</div>
+        <button class="hamburger" id="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+        <ul id="navMenu">
+                <li><a href="#home" class="active">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#education">Education</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#publications">Publications</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><a href="v1.html" target="_blank" class="portfolio-v1-link">
+    <i class="fas fa-history"></i> V1.0
+</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section id="home" class="hero">
+        <div class="hero-wrapper">
+            <div class="hero-content">
+                <div class="greeting-text">👋 Hello! Welcome to my portfolio</div>
+                <div class="typing-container">
+                    <span class="typed-text" id="typedText"></span>
+                    <span class="cursor">|</span>
+                </div>
+                <div class="hero-label">Mechanical Engineering Student</div>
+                <h1>Vemulapalli<br>Leela Krishna</h1>
+                <p class="subtitle">Autonomous Systems | Drone Technology | ROS 2 Enthusiast</p>
+                <p class="hero-description">
+                    Third-year Mechanical Engineering student specializing in autonomous drone systems, 
+                    UAV development, and robotics.
+                </p>
+                <div class="cta-group">
+                    <a href="#contact" class="btn btn-primary">
+                        <i class="fas fa-paper-plane"></i> Get In Touch
+                    </a>
+                    <a href="#projects" class="btn btn-outline">
+                        <i class="fas fa-rocket"></i> View Projects
+                    </a>
+                </div>
+            </div>
+
+            <div class="photo-container">
+                <div class="photo-wrapper">
+                    <div class="photo-glow"></div>
+                    <div class="photo-frame">
+                        <div class="photo-inner">
+    <img src="vlk.jpeg" alt="Vemulapalli Leela Krishna" class="profile-photo">
+</div>
+                        </div>
+                    </div>
+                    <div class="floating-icons">
+                        <i class="fas fa-drone float-icon"></i>
+                        <i class="fas fa-robot float-icon"></i>
+                        <i class="fas fa-microchip float-icon"></i>
+                        <i class="fas fa-code float-icon"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" style="background: rgba(0, 0, 0, 0.2);">
+        <div class="section-header">
+            <div class="section-label">Introduction</div>
+            <h2>About Me</h2>
+        </div>
+        <div style="max-width: 800px; margin: 0 auto;">
+            <p style="font-size: 1.1rem; line-height: 1.8; color: var(--text-dim); margin-bottom: 2rem;">
+                <strong style="color: var(--primary);">Aiming for Innovation in Robotics</strong><br><br>
+                I am presently a third-year Mechanical Engineering student at UCEK-JNTUK, passionate about robotics and autonomous systems.<br><br>
+                I specialize in drone technology, UAV development, and robotic system integration. My expertise lies in working with PX4, ROS 2, GAZEBO, and various control systems.<br><br>
+                I believe in a multi-disciplinary approach to robotics where I strive to understand both hardware and software aspects of these wonderful machines.<br><br>
+                My main areas of interest are:
+            </p>
+            <ul style="list-style: none; padding: 0;">
+                <li style="padding: 0.5rem 0; font-size: 1.1rem;"><i class="fas fa-angle-right" style="color: var(--primary); margin-right: 10px;"></i><strong>Autonomous Navigation</strong></li>
+                <li style="padding: 0.5rem 0; font-size: 1.1rem;"><i class="fas fa-angle-right" style="color: var(--primary); margin-right: 10px;"></i><strong>Computer Vision & Perception</strong></li>
+                <li style="padding: 0.5rem 0; font-size: 1.1rem;"><i class="fas fa-angle-right" style="color: var(--primary); margin-right: 10px;"></i><strong>UAV Design & Development</strong></li>
+                <li style="padding: 0.5rem 0; font-size: 1.1rem;"><i class="fas fa-angle-right" style="color: var(--primary); margin-right: 10px;"></i><strong>Robotics Simulation</strong></li>
+            </ul>
+        </div>
+    </section>
+
+    <section id="experience">
+        <div class="section-header">
+            <div class="section-label">Journey</div>
+            <h2>Experience</h2>
+            <p class="section-description">Research internships, leadership roles, and technical coordination</p>
+        </div>
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-date">MAY-JUN 2025</div>
+                <h4>Research Intern</h4>
+                <span class="organization">IIT Hyderabad</span>
+                <p>Completed an internship on <strong><em>Stereo Vision-Based Obstacle Detection and Depth Estimation with Distance Measurement</em> </strong> under the guidance of <strong>Dr. R. Prasanth Kumar</strong>. The work involved developing stereo vision algorithms for real-time obstacle detection and depth estimation, contributing to research in mobile robotics and SLAM-based robotic systems at IITH</p>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-date">MAY 2025 - PRESENT</div>
+                <h4>President</h4>
+                <span class="organization">YugTroniX Robotics Club, UCEK-JNTUK</span>
+                <p>Leading university's first robotics club, overseeing quadcopter development projects, managing 150+ members, organizing workshops, and mentoring teams in ROS 2 and drone technology.</p>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-date">AUG 2024 - MAY 2025</div>
+                <h4>Vice President & Quadcopter Team Lead</h4>
+                <span class="organization">YugTroniX Robotics Club, UCEK-JNTUK</span>
+                <p>Established robotics club infrastructure, coordinated technical workshops, and led quadcopter development team from inception to deployment.</p>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-date">PRESENT</div>
+                <h4>Technical Coordinator</h4>
+                <span class="organization">Torque 2K25 - National Technical Symposium</span>
+                <p>Managing technical operations, event coordination, and digital presence for national-level engineering symposium.</p>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-date">PRESENT</div>
+                <h4>Website Coordinator</h4>
+                <span class="organization">IIPE JNTUK Student Chapter</span>
+                <p>Developed and maintain the official website for the IIPE student chapter, improving online presence and member engagement for 150+ members.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="education" style="background: rgba(0, 0, 0, 0.2);">
+        <div class="section-header">
+            <div class="section-label">Academic Background</div>
+            <h2>Education</h2>
+        </div>
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-date">2023 - 2027</div>
+                <h4>B.Tech in Mechanical Engineering</h4>
+                <span class="organization">UCEK-JNTUK</span>
+                <p>CGPA: 8.5/10 (Through 4th Semester)<br>
+                Recipient of ₹20,000 KEATS Scholarship for academic excellence</p>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-date">2021 - 2023</div>
+                <h4>Intermediate (MPC)</h4>
+                <span class="organization">N K R Junior College - BIE, Andhra Pradesh</span>
+                <p>Percentage: 96.9%</p>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-date">2020 - 2021</div>
+                <h4>Secondary School (10th)</h4>
+                <span class="organization">Rama Krishna High School - BSE, Andhra Pradesh</span>
+                <p>GPA: 10/10 (100%)</p>
+            </div>
+        </div>
+    </section>
+    <section id="achievements">
+        <div class="section-header">
+            <div class="section-label">Milestones</div>
+            <h2>Achievements</h2>
+        </div>
+        <div class="achievements-grid">
+            <div class="achievement-card">
+                <i class="fas fa-trophy achievement-icon"></i>
+                <h3>KEATS Scholarship</h3>
+                <p>Awarded a ₹20,000 scholarship from KEATS organization for being a one of the top meritorious student in Mechanical Engineering (Jan 2025 & Nov 2025)</p>
+            </div>
+            <div class="achievement-card">
+                <i class="fas fa-lightbulb achievement-icon"></i>
+                <h3>INNO-V8 Innovation Fund</h3>
+                <p>Two projects accepted under the INNO-V8 Innovation Fund (Feb 2025):</p>
+                <ul style="margin-left: 20px; margin-top: 10px;">
+                    <li>Power-Harvesting Drone Prototype</li>
+                    <li>Wildlife Monitoring UAV System</li>
+                </ul>
+                <p>Both projects were selected with sanctioned funding support of approximately ₹1.57 lakhs each at the time of approval. The teams have successfully completed Phase-I and are currently progressing into Phase-II development.</p>
+            </div>
+            <div class="achievement-card">
+                <i class="fas fa-bolt achievement-icon"></i>
+                <h3>SPARKS Program</h3>
+                <p>Selected for the SPARKS program by Subbu Kota Foundation, working on an autonomous power-harvesting drone (Jan 2025)</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="skills">
+        <div class="section-header">
+            <div class="section-label">Technical Arsenal</div>
+            <h2>Skills & Frameworks</h2>
+            <p class="section-description">Comprehensive toolkit for robotics and autonomous systems development</p>
+        </div>
+        <div class="skill-badges">
+            <span class="skill-badge" style="--i:1">Python</span>
+            <span class="skill-badge" style="--i:2">C++</span>
+            <span class="skill-badge" style="--i:3">Bash</span>
+            <span class="skill-badge" style="--i:4">PX4</span>
+            <span class="skill-badge" style="--i:5">ROS 2 & Gazebo</span>
+            <span class="skill-badge" style="--i:6">MissionPlanner</span>
+            <span class="skill-badge" style="--i:7">QGroundControl</span>
+            <span class="skill-badge" style="--i:8">OpenCV</span>
+            <span class="skill-badge" style="--i:9">YOLO</span>
+            <span class="skill-badge" style="--i:10">PyTorch</span>
+            <span class="skill-badge" style="--i:11">MATLAB & Simulink</span>
+            <span class="skill-badge" style="--i:12">Fusion 360</span>
+            <span class="skill-badge" style="--i:13">AutoCAD</span>
+            <span class="skill-badge" style="--i:14">Raspberry Pi</span>
+            <span class="skill-badge" style="--i:15">Linux</span>
+            <span class="skill-badge" style="--i:16">Git & GitHub</span>
+            <span class="skill-badge" style="--i:17">HTML & CSS</span>
+            <span class="skill-badge" style="--i:18">JavaScript</span>
+            <span class="skill-badge" style="--i:19">ArUco Tracking</span>
+        </div>
+    </section>
+
+ <section id="projects" style="background: rgba(0, 0, 0, 0.2);">
+    <div class="section-header">
+        <div class="section-label">Portfolio</div>
+        <h2>Check out my Projects</h2>
+        <p class="section-description">Cutting-edge robotics and autonomous systems development</p>
+    </div>
+    
+    <div class="filter-buttons">
+        <button class="filter-btn active" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="drones">Drones & UAVs</button>
+        <button class="filter-btn" data-filter="robotics">Robotics</button>
+        <button class="filter-btn" data-filter="web">Web Development</button>
+        <button class="filter-btn" data-filter="vision">Computer Vision</button>
+    </div>
+
+    <div class="project-grid">
+
+        <div class="project-card" data-category="drones robotics vision">
+            <div class="project-image">
+                <div class="project-image-circle">
+                    <img src="https://raw.githubusercontent.com/leela-krishna4/images/refs/heads/main/Leonardo_Phoenix_10_A_futuristic_drone_hovering_near_highvolta_0%20(1).jpg" alt="Power-Harvesting Drone">
+                </div>
+            </div>
+            <div class="project-content">
+                <h3>Power-Harvesting Drone System</h3>
+                <p>Autonomous UAV system for electromagnetic power harvesting from high-voltage transmission lines. Features custom gripper mechanism, real-time power transfer analysis, and flight stability optimization.</p>
+                <div class="tech-stack">
+                    <span class="tech-badge">PX4</span>
+                    <span class="tech-badge">ROS 2</span>
+                    <span class="tech-badge">MATLAB</span>
+                    <span class="tech-badge">Simulink</span>
+                    <span class="tech-badge">Python</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="project-card" data-category="drones vision">
+            <div class="project-image">
+                <div class="project-image-circle">
+                    <img src="https://raw.githubusercontent.com/leela-krishna4/images/refs/heads/main/Leonardo_Phoenix_10_A_drone_flying_above_a_dense_forest_at_sun_2%20(1).jpg" alt="Wildlife Monitoring UAV">
+                </div>
+            </div>
+            <div class="project-content">
+                <h3>Wildlife Monitoring UAV</h3>
+                <p>Intelligent UAV platform for real-time wildlife tracking and habitat monitoring. Integrates computer vision, autonomous navigation, and environmental data collection systems.</p>
+                <div class="tech-stack">
+                    <span class="tech-badge">YOLO</span>
+                    <span class="tech-badge">OpenCV</span>
+                    <span class="tech-badge">PyTorch</span>
+                    <span class="tech-badge">ROS 2</span>
+                </div>
+            </div>
+        </div>
+
+       
+        <div class="project-card" data-category="drones robotics">
+            <div class="project-image">
+                <div class="project-image-circle">
+                    <img src="https://raw.githubusercontent.com/leelakrishnavemulapalli/web/refs/heads/main/IMG_20241215_232730%5B1%5D.jpg" alt="YugTroniX Quadcopter">
+                </div>
+            </div>
+            <div class="project-content">
+                <h3>YugTroniX Custom Quadcopter</h3>
+                <p>Advanced quadcopter platform with custom flight controller, telemetry systems, and autonomous navigation capabilities. Team development project with full system integration.</p>
+                <div class="tech-stack">
+                    <span class="tech-badge">ArduPilot</span>
+                    <span class="tech-badge">Fusion 360</span>
+                    <span class="tech-badge">QGroundControl</span>
+                </div>
+                <a href="https://yugtronix-web-management.github.io/yugweb/" class="btn btn-outline" target="_blank" style="margin-top: 1rem; font-size: 0.9rem; padding: 0.7rem 1.5rem;">
+                    <i class="fas fa-external-link-alt"></i> Visit Project
+                </a>
+            </div>
+        </div>
+
+        <div class="project-card" data-category="web">
+            <div class="project-image">
+                <div class="project-image-circle">
+                    <img src="https://www.torquejntuk.in/images/TORQUE.svg" alt="Torque 2K25">
+                </div>
+            </div>
+            <div class="project-content">
+                <h3>Torque 2K25 Digital Platform</h3>
+                <p>Managing technical aspects and social media for Torque 2K25, a national-level technical symposium. Developed promotional materials and event registration systems.</p>
+                <div class="tech-stack">
+                    <span class="tech-badge">Web Design</span>
+                    <span class="tech-badge">Social Media</span>
+                    <span class="tech-badge">Event Management</span>
+                </div>
+                <a href="https://www.torquejntuk.in/" class="btn btn-outline" target="_blank" style="margin-top: 1rem; font-size: 0.9rem; padding: 0.7rem 1.5rem;">
+                    <i class="fas fa-external-link-alt"></i> Visit Website
+                </a>
+            </div>
+        </div>
+        
+         <div class="project-card" data-category="web">
+            <div class="project-image">
+                <div class="project-image-circle">
+                    <img src="https://raw.githubusercontent.com/leelakrishnavemulapalli/web/refs/heads/main/IMG_20241215_232730%5B1%5D.jpg" alt="YugTroniX Website">
+                </div>
+            </div>
+            <div class="project-content">
+                <h3>YugTroniX Club Website</h3>
+                <p>Official website for UCEK's first robotics club. Showcases club projects, provides learning resources, and facilitates member collaboration with modern design and interactive elements.</p>
+                <div class="tech-stack">
+                    <span class="tech-badge">HTML5</span>
+                    <span class="tech-badge">CSS3</span>
+                    <span class="tech-badge">JavaScript</span>
+                </div>
+                <a href="https://yugtronix-web-management.github.io/yugweb/" class="btn btn-outline" target="_blank" style="margin-top: 1rem; font-size: 0.9rem; padding: 0.7rem 1.5rem;">
+                    <i class="fas fa-external-link-alt"></i> Visit Website
+                </a>
+            </div>
+        </div>
+        
+        <div class="project-card" data-category="web">
+            <div class="project-image">
+                <div class="project-image-circle">
+                    <img src="https://danielpuiatti.com/wp-content/uploads/2023/11/Maintaining-Perfect-Aspect-Ratios-A-Web-Developers-Guide-to-Image-Resizing-with-HTML-CSS-and-JS-1024x585.png" alt="IIPE Website">
+                </div>
+            </div>
+            <div class="project-content">
+                <h3>IIPE Student Chapter Website</h3>
+                <p>Full-stack web platform for 150+ members featuring event management, member registration, resource sharing, and real-time updates for engineering student community.</p>
+                <div class="tech-stack">
+                    <span class="tech-badge">HTML5</span>
+                    <span class="tech-badge">CSS3</span>
+                    <span class="tech-badge">JavaScript</span>
+                </div>
+                <a href="https://iipe-ucek-web-management.github.io/iipe.web/" class="btn btn-outline" target="_blank" style="margin-top: 1rem; font-size: 0.9rem; padding: 0.7rem 1.5rem;">
+                    <i class="fas fa-external-link-alt"></i> View Site
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+   <section id="publications" style="background: rgba(0, 0, 0, 0.2);">
+        <div class="section-header">
+            <div class="section-label">Research</div>
+            <h2>Publications</h2>
+            <p class="section-description">Academic contributions to robotics and autonomous systems</p>
+        </div>
+        <div class="publication-card">
+            <h3 style="color: var(--primary); font-size: 1.6rem; margin: 1rem 0;">Collaborative Outdoor Terrain Mapping via Real-Time Multi-Robot SLAM</h3>
+            <p style="color: var(--accent); font-weight: 600; margin: 0.5rem 0;">INaCoMM 2025 - International Conference on Machines and Mechanisms</p>
+            <p style="color: var(--text-dim); line-height: 1.7; margin: 1rem 0;">
+                Research on multi-robot SLAM and stereo vision-based obstacle detection for GPS-denied environments using ROS2 and Raspberry Pi 5.
+            </p>
+            <p style="color: var(--text-dim); font-size: 0.9rem;">
+                <i class="fas fa-calendar" style="color: var(--primary); margin-right: 8px;"></i>
+                Expected Publication: December 2025
+            </p>
+        </div>
+    </section>
+
+   <section id="contact" style="background: rgba(0, 0, 0, 0.2);">
+  <div class="contact-section">
+    <div class="section-header">
+      <div class="section-label">Let's Connect</div>
+      <h2>Get In Touch</h2>
+      <p class="section-description">Open to research collaborations, internship opportunities, and technical discussions</p>
+    </div>
+    <form action="https://formspree.io/f/mqadjgek" method="POST" class="contact-form" id="contactForm">
+      <div class="form-group">
+        <label class="form-label" for="name">Your Name</label>
+        <input type="text" id="name" name="name" class="form-input" required>
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="email">Your Email</label>
+        <input type="email" id="email" name="email" class="form-input" required>
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="subject">Subject</label>
+        <input type="text" id="subject" name="subject" class="form-input" required>
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="message">Message</label>
+        <textarea id="message" name="message" class="form-textarea" required></textarea>
+      </div>
+      <button type="submit" class="btn btn-primary" style="width: 100%;">
+        <i class="fas fa-paper-plane"></i> Send Message
+      </button>
+      <div class="success-message" id="successMessage" style="display: none; color: #ffd700; text-align: center; margin-top: 15px;">
+        ✓ Thank you! Your message has been sent successfully.
+      </div>
+    </form>
+            <div class="social-links">
+                <a href="https://www.linkedin.com/in/leela-krishna-vemulapalli-514188262" target="_blank" class="social-link" title="LinkedIn">
+                    <i class="fab fa-linkedin"></i>
+                </a>
+                <a href="https://github.com/leela-krishna4" target="_blank" class="social-link" title="GitHub">
+                    <i class="fab fa-github"></i>
+                </a>
+                <a href="https://x.com/_leela_krishna" target="_blank" class="social-link" title="Twitter">
+                    <i class="fab fa-twitter"></i>
+                </a>
+                <a href="https://www.instagram.com/leelakrishnavemulapalli" target="_blank" class="social-link" title="Instagram">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="https://leelakrishna.vercel.app/" target="_blank" class="social-link" title="Website">
+                    <i class="fas fa-globe"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Vemulapalli Leela Krishna. All Rights Reserved.</p>
+
+    </footer>
+
+    <script>
+    
+        const texts = [
+            "Hi, I'm Leela Krishna Vemulapalli...",
+            "Passionate about Robotics & Drones...",
+            "Building the Future of Autonomous Systems...",
+            "Let's innovate together!"
+        ];
+        let textIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+        let typingSpeed = 100;
+
+        function typeText() {
+            const currentText = texts[textIndex];
+            const typedElement = document.getElementById('typedText');
+
+            if (isDeleting) {
+                typedElement.textContent = currentText.substring(0, charIndex - 1);
+                charIndex--;
+                typingSpeed = 50;
+            } else {
+                typedElement.textContent = currentText.substring(0, charIndex + 1);
+                charIndex++;
+                typingSpeed = 100;
+            }
+
+            if (!isDeleting && charIndex === currentText.length) {
+                isDeleting = true;
+                typingSpeed = 2000;
+            } else if (isDeleting && charIndex === 0) {
+                isDeleting = false;
+                textIndex = (textIndex + 1) % texts.length;
+                typingSpeed = 500;
+            }
+
+            setTimeout(typeText, typingSpeed);
+        }
+
+ 
+        window.addEventListener('load', () => {
+            setTimeout(typeText, 1000);
+        });
+
+  
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    
+                    document.querySelectorAll('nav a').forEach(link => link.classList.remove('active'));
+                    this.classList.add('active');
+                }
+            });
+        });
+
+const hamburger = document.getElementById('hamburger');
+const navMenu = document.getElementById('navMenu');
+
+hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('active');
+    navMenu.classList.toggle('active');
+});
+
+
+document.querySelectorAll('nav ul li a').forEach(link => {
+    link.addEventListener('click', () => {
+        hamburger.classList.remove('active');
+        navMenu.classList.remove('active');
+    });
+});
+
+
+document.addEventListener('click', (e) => {
+    if (!hamburger.contains(e.target) && !navMenu.contains(e.target)) {
+        hamburger.classList.remove('active');
+        navMenu.classList.remove('active');
+    }
+});
+ 
+        window.addEventListener('scroll', () => {
+            let current = '';
+            document.querySelectorAll('section').forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (pageYOffset >= sectionTop - 100) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            document.querySelectorAll('nav a').forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href').slice(1) === current) {
+                    link.classList.add('active');
+                }
+            });
+        });
+
+      
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const projectCards = document.querySelectorAll('.project-card');
+
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                filterBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+
+                const filter = btn.getAttribute('data-filter');
+
+                projectCards.forEach(card => {
+                    if (filter === 'all') {
+                        card.classList.remove('hidden');
+                    } else {
+                        const categories = card.getAttribute('data-category');
+                        if (categories.includes(filter)) {
+                            card.classList.remove('hidden');
+                        } else {
+                            card.classList.add('hidden');
+                        }
+                    }
+                });
+            });
+        });
+
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('section').forEach(section => {
+            section.style.opacity = '0';
+            section.style.transform = 'translateY(30px)';
+            section.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(section);
+        });
+
+        const cards = document.querySelectorAll('.project-card, .publication-card, .timeline-item');
+        cards.forEach((card, index) => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(20px)';
+            card.style.transition = `opacity 0.5s ease ${index * 0.1}s, transform 0.5s ease ${index * 0.1}s`;
+            observer.observe(card);
+        });
+document.getElementById('contactForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const form = this;
+            const formData = new FormData(form);
+            const successMessage = document.getElementById('successMessage');
+            const submitButton = form.querySelector('button[type="submit"]');
+            
+            submitButton.disabled = true;
+            submitButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+            
+            try {
+                const response = await fetch(form.action, {
+                    method: 'POST',
+                    body: formData,
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                });
+                
+                if (response.ok) {
+                    successMessage.style.display = 'block';
+                    form.reset();
+                    
+                    setTimeout(() => {
+                        successMessage.style.display = 'none';
+                    }, 3000);
+                } else {
+                    const data = await response.json();
+                    if (data.errors) {
+                        alert('Error: ' + data.errors.map(error => error.message).join(', '));
+                    } else {
+                        alert('Oops! There was a problem submitting your form');
+                    }
+                }
+            } catch (error) {
+                alert('Oops! There was a problem. Please try again.');
+                console.error('Error:', error);
+            } finally {
+                submitButton.disabled = false;
+                submitButton.innerHTML = '<i class="fas fa-paper-plane"></i> Send Message';
+            }
+        });
+        
+
+        document.addEventListener('mousemove', (e) => {
+            const orb1 = document.querySelector('.orb-1');
+            const orb2 = document.querySelector('.orb-2');
+            
+            const x = e.clientX / window.innerWidth;
+            const y = e.clientY / window.innerHeight;
+            
+            orb1.style.transform = `translate(${x * 50}px, ${y * 50}px)`;
+            orb2.style.transform = `translate(${-x * 50}px, ${-y * 50}px)`;
+        });
+
+        document.querySelector('#home').style.opacity = '1';
+        document.querySelector('#home').style.transform = 'translateY(0)';
+        document.addEventListener('contextmenu', e => e.preventDefault());
+
+document.addEventListener('keydown', e => {
+  if (e.key === "F12" || (e.ctrlKey && e.shiftKey && e.key === "I")) {
+    e.preventDefault();
+  }
+});
+    </script>
+</body>
+</html>
     </script>
 </body>
 </html>
