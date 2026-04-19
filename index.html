@@ -719,7 +719,7 @@ footer span{color:var(--green);}
         </div>
         <div class="hero-stats">
           <div class="h-stat"><div class="h-stat-v">₹1.57L</div><div class="h-stat-l">R&D Funded</div></div>
-        <!--<div class="h-stat"><div class="h-stat-v">8.53</div><div class="h-stat-l">CGPA /10</div></div>  -->
+        <div class="h-stat"><div class="h-stat-v">8.53</div><div class="h-stat-l">CGPA /10</div></div> 
           <div class="h-stat"><div class="h-stat-v">1</div><div class="h-stat-l">IIT Paper</div></div>
         </div>
         <div class="hero-btns">
@@ -1196,25 +1196,66 @@ document.getElementById('achNext').onclick=()=>{aSlide++;buildAch();};
 
 /* ── PROJECTS ── */
 const projs=[
-  {cats:['drones','robotics'], img:'https://upload.wikimedia.org/wikipedia/commons/thumb/8/8b/DJI_Matrice_600_Hexacopter.jpg/1280px-DJI_Matrice_600_Hexacopter.jpg', ico:'fas fa-helicopter', badge:'IndiaSkills 2026', title:'Payload Delivery Hexacopter', desc:'Designed and built a hexacopter with 250g payload delivery for IndiaSkills 2025–26. Programmed waypoint navigation and payload deployment under strict time constraints.', tags:['ArduPilot','QGroundControl','Python','Fusion 360'], link:''},
+  {cats:['drones','robotics'],
+   img:'https://upload.wikimedia.org/wikipedia/commons/thumb/8/8b/DJI_Matrice_600_Hexacopter.jpg/1280px-DJI_Matrice_600_Hexacopter.jpg',
+   ico:'fas fa-helicopter',badge:'IndiaSkills 2026',title:'Payload Delivery Hexacopter',
+   desc:'Designed and built a hexacopter with 250g payload delivery for IndiaSkills 2025–26. Programmed waypoint navigation and payload deployment under strict time constraints.',
+   tags:['ArduPilot','QGroundControl','Python','Fusion 360'],link:''},
 
-{cats:['robotics','vision'], img:'https://upload.wikimedia.org/wikipedia/commons/thumb/2/21/Simple_robot_OLED_face.jpg/640px-Simple_robot_OLED_face.jpg', ico:'fas fa-robot', badge:'Active', title:'NEBULA: AI Desktop Companion', desc:'ESP32-S3 based robotic unit with OLED emotion display, Groq API voice assistant, and 36 emotion states using FreeRTOS dual-core architecture.', tags:['ESP32-S3','FreeRTOS','Groq API','Python','OLED'], link:''},
+  {cats:['robotics','vision'],
+   img:'https://upload.wikimedia.org/wikipedia/commons/thumb/2/21/Simple_robot_OLED_face.jpg/640px-Simple_robot_OLED_face.jpg',
+   ico:'fas fa-robot',badge:'Active',title:'NEBULA: AI Desktop Companion',
+   desc:'ESP32-S3 based robotic unit with OLED emotion display, Groq API voice assistant, and 36 emotion states using FreeRTOS dual-core architecture.',
+   tags:['ESP32-S3','FreeRTOS','Groq API','Python','OLED'],link:''},
 
-{cats:['vision','robotics'], img:'https://upload.wikimedia.org/wikipedia/commons/thumb/2/2d/Stereovision_Depth_Map.png/1280px-Stereovision_Depth_Map.png', ico:'fas fa-eye', badge:'IIT Hyderabad', title:'Stereo Vision Obstacle Detection', desc:'Stereo camera calibration (IMX219, ZED), CLAHE+WLS disparity maps, YOLO+DBSCAN distance-aware detection on Raspberry Pi and Hailo-8 AI accelerator.', tags:['OpenCV','YOLO','DBSCAN','Raspberry Pi','Hailo-8'], link:''},
+  {cats:['vision','robotics'],
+   img:'https://upload.wikimedia.org/wikipedia/commons/thumb/2/2d/Stereovision_Depth_Map.png/1280px-Stereovision_Depth_Map.png',
+   ico:'fas fa-eye',badge:'IIT Hyderabad',title:'Stereo Vision Obstacle Detection',
+   desc:'Stereo camera calibration (IMX219, ZED), CLAHE+WLS disparity maps, YOLO+DBSCAN distance-aware detection on Raspberry Pi and Hailo-8 AI accelerator.',
+   tags:['OpenCV','YOLO','DBSCAN','Raspberry Pi','Hailo-8'],link:''},
 
-{cats:['drones','vision'], img:'https://raw.githubusercontent.com/leela-krishna4/images/refs/heads/main/Leonardo_Phoenix_10_A_drone_flying_above_a_dense_forest_at_sun_2%20(1).jpg', ico:'', badge:'INNO-V8 Grant', title:'Wildlife Monitoring UAV', ...},
+  {cats:['drones','vision'],
+   img:'https://raw.githubusercontent.com/leela-krishna4/images/refs/heads/main/Leonardo_Phoenix_10_A_drone_flying_above_a_dense_forest_at_sun_2%20(1).jpg',
+   ico:'',badge:'INNO-V8 Grant',title:'Wildlife Monitoring UAV',
+   desc:'Custom 3D-printed drone frame with autonomous flight. Real-time animal species detection and spatial distance measurement via Raspberry Pi pipeline.',
+   tags:['YOLO','OpenCV','PyTorch','ROS 2','RPi'],link:''},
 
-{cats:['drones','robotics','vision'], img:'https://raw.githubusercontent.com/leela-krishna4/images/refs/heads/main/Leonardo_Phoenix_10_A_futuristic_drone_hovering_near_highvolta_0%20(1).jpg', ico:'', badge:'INNO-V8 Grant', title:'Power-Harvesting Drone', ...},
+  {cats:['drones','robotics','vision'],
+   img:'https://raw.githubusercontent.com/leela-krishna4/images/refs/heads/main/Leonardo_Phoenix_10_A_futuristic_drone_hovering_near_highvolta_0%20(1).jpg',
+   ico:'',badge:'INNO-V8 Grant',title:'Power-Harvesting Drone',
+   desc:'Autonomous UAV for electromagnetic harvesting from high-voltage lines with waypoint navigation and custom 3-axis mechanical gripper for latching.',
+   tags:['PX4','ROS 2','MATLAB','Simulink','Python'],link:''},
 
-{cats:['robotics'], img:'https://upload.wikimedia.org/wikipedia/commons/thumb/4/4e/Beehive_with_solar_panel.jpg/1280px-Beehive_with_solar_panel.jpg', ico:'fas fa-seedling', badge:'Community', title:'Solar Beehive Thermoregulation', ...},
+  {cats:['robotics'],
+   img:'https://upload.wikimedia.org/wikipedia/commons/thumb/b/b5/Bee_hive_2.jpg/640px-Bee_hive_2.jpg',
+   ico:'fas fa-seedling',badge:'Community',title:'Solar Beehive Thermoregulation',
+   desc:'ESP32-based autonomous climate control for beehives, maintaining 32–35°C with solar power and temperature sensors. Under Dr. A. Gopala Krishna.',
+   tags:['ESP32','C++','Sensors','Solar'],link:''},
 
-{cats:['drones','robotics'], img:'https://raw.githubusercontent.com/leelakrishnavemulapalli/web/refs/heads/main/IMG_20241215_232730%5B1%5D.jpg', ico:'', badge:'Club Flagship', title:'YugTroniX Custom Quadcopter', ...},
+  {cats:['drones','robotics'],
+   img:'https://raw.githubusercontent.com/leelakrishnavemulapalli/web/refs/heads/main/IMG_20241215_232730%5B1%5D.jpg',
+   ico:'',badge:'Club Flagship',title:'YugTroniX Custom Quadcopter',
+   desc:'Full quadcopter development — custom flight controller, telemetry, and autonomous navigation. Club flagship project from scratch to first autonomous flight.',
+   tags:['ArduPilot','Fusion 360','QGroundControl'],link:'https://yugtronix-web-management.github.io/yugweb/'},
 
-{cats:['web'], img:'https://www.torquejntuk.in/images/TORQUE.svg', ico:'', badge:'National Symposium', title:'Torque 2K25 Platform', ...},
+  {cats:['web'],
+   img:'https://www.torquejntuk.in/images/TORQUE.svg',
+   ico:'',badge:'National Symposium',title:'Torque 2K25 Platform',
+   desc:'Digital platform for national-level engineering symposium with functional forms and interactive UI coordination.',
+   tags:['HTML5','CSS3','JavaScript'],link:'https://www.torquejntuk.in/'},
 
-{cats:['web'], img:'https://upload.wikimedia.org/wikipedia/commons/thumb/3/3b/University_student_chapter_web.jpg/640px-University_student_chapter_web.jpg', ico:'fas fa-globe', badge:'Student Chapter', title:'IIPE JNTUK Chapter Website', ...},
+  {cats:['web'],
+   img:'',
+   ico:'fas fa-globe',badge:'Student Chapter',title:'IIPE JNTUK Chapter Website',
+   desc:'Full web platform for 150+ member student chapter with event management, registration, and real-time updates.',
+   tags:['HTML5','CSS3','JavaScript'],link:'https://iipe-ucek-web-management.github.io/iipe.web/'},
 
-{cats:['web'], img:'https://upload.wikimedia.org/wikipedia/commons/thumb/6/6e/Robotics_club_students.jpg/640px-Robotics_club_students.jpg', ico:'fas fa-users', badge:'Club', title:'YugTroniX Club Website', ...},
+  {cats:['web'],
+   img:'',
+   ico:'fas fa-users',badge:'Club',title:'YugTroniX Club Website',
+   desc:"Official website for UCEK-JNTUK's robotics club — project showcase and collaboration portal for 150+ members.",
+   tags:['HTML5','CSS3','JavaScript'],link:'https://yugtronix-web-management.github.io/yugweb/'},
+];
 function projCard(p){
   const imgHtml=p.img?`<img src="${p.img}" alt="${p.title}">`:`<i class="${p.ico}"></i>`;
   const linkHtml=p.link?`<a href="${p.link}" target="_blank" class="btn btn-sm btn-outline"><i class="fas fa-external-link-alt"></i> visit</a>`:'';
